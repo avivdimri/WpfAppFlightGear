@@ -72,6 +72,24 @@ namespace myFirstProject
                 return model.MainGraphName;
             }
         }
+
+        public List<DataPoint> VM_SecondGraphList
+        {
+
+            get
+            {
+                return model.SecondGraphList;
+            }
+        }
+
+        public string VM_SecondGraphName
+        {
+
+            get
+            {
+                return model.SecondGraphName;
+            }
+        }
     }
 
 

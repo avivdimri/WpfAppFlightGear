@@ -303,6 +303,7 @@ namespace myFirstProject
         public void Start()
         {
             isAfterLoad = true;
+            pearson();
 
             new Thread(delegate ()
             {
@@ -341,7 +342,8 @@ namespace myFirstProject
             Yaw = findElement("side-slip-deg");
             Direction = findElement("heading-deg");
 
-            setMainGraphList(mainGraphName);
+            setMainGraphList(MainGraphName);
+            setSecondGraphList(SecondGraphName);
             setTime();
         }
 
@@ -384,6 +386,10 @@ namespace myFirstProject
         }
 
 
+        // map of the corelations of all features
+        private Dictionary<string, string> corelationMap;
+        
+
 
         private List<DataPoint> mainGraphList;
 
@@ -408,6 +414,7 @@ namespace myFirstProject
             set
             {
                 mainGraphName = value;
+                
                 NotifyPropertyChanged("MainGraphName");
             }
             get
@@ -427,7 +434,8 @@ namespace myFirstProject
             set
             {
                 secondGraphList = value;
-                NotifyPropertyChanged("MainGraphList");
+                
+                NotifyPropertyChanged("SecondGraphList");
             }
             get
             {
@@ -469,14 +477,35 @@ namespace myFirstProject
             }
 
             MainGraphName = column;
-
             MainGraphList = newDataPoints;
+            SecondGraphName = corelationMap[column];
+            setSecondGraphList(SecondGraphName);
+        }
+
+        public void setSecondGraphList(string column)
+        {
+            List<float> cornentColumn = myData[myMap[column]];
+            List<DataPoint> newDataPoints = new List<DataPoint>();
+            int i = 0;
+            foreach (float num in cornentColumn)
+            {
+
+                newDataPoints.Add(new DataPoint(i++, num));
+                if (i > IndexRow)
+                {
+                    break;
+                }
+
+            }
+
+            SecondGraphName = column;
+            SecondGraphList = newDataPoints;
 
         }
-        public Dictionary<string, string> pearson()
+        public void pearson()
         {
             animaly_detection anomaly = new animaly_detection();
-            Dictionary<string, string> my_dictionary = new Dictionary<string, string>();
+            corelationMap = new Dictionary<string, string>();
             int i;
             for (i = 0; i < myMap.Count; i++)
             {
@@ -500,9 +529,9 @@ namespace myFirstProject
                         }
                     }
                 }
-                my_dictionary.Add(myMap.ElementAt(i).Key, myMap.ElementAt(index).Key);
+                corelationMap.Add(myMap.ElementAt(i).Key, myMap.ElementAt(index).Key);
             }
-            return my_dictionary;
+            
         }
         void print()
         {

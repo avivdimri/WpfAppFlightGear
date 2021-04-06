@@ -50,26 +50,15 @@
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-                <oxy:Plot x:Name="second_plot" Height="150" Width="150" Title="{Binding VM_Title2, Mode=OneWay}" Canvas.Right="10" Canvas.Left="155">
+                <oxy:Plot x:Name="second_plot" Height="150" Width="150" Title="{Binding VM_SecondGraphName, Mode=OneWay}" Canvas.Right="10" Canvas.Left="155">
                     <oxy:Plot.Series>
-                        <oxy:LineSeries  ItemsSource="{Binding VM_Points2, Mode=OneWay}"/>
+                        <oxy:LineSeries  ItemsSource="{Binding VM_SecondGraphList, Mode=OneWay}"/>
                     </oxy:Plot.Series>
                 </oxy:Plot>
 
+                
+                
+                
                 <oxy:Plot Height="273" Width="273" Title="{Binding VM_Title1, Mode=OneWay}" Canvas.Bottom="10" Canvas.Left="10" Canvas.Top="155" >
                     <oxy:Plot.Series>
                         <oxy:LineSeries ItemsSource="{Binding VM_Points1, Mode=OneWay}"/>
