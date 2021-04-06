@@ -538,9 +538,7 @@ namespace myFirstProject
 
         }
 
-        void orint2()
-        {
-
+        void orint2() { 
         }
 
 
