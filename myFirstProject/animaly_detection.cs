@@ -51,7 +51,7 @@ namespace myFirstProject
         }
 
         // performs a linear regression and returns the line equation
-        Line linear_reg(Point[]points, int size)
+      public Line linear_reg(Point[]points, int size)
         {
             float[] x = new float[size];
             float[] y = new float[size];
@@ -65,7 +65,7 @@ namespace myFirstProject
             Line line = new Line(a, b);
             return line;
         }
-
+      
         // returns the deviation between point p and the line equation of the points
         float dev(Point p, Point[] points, int size)
         {

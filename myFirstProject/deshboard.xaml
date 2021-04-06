@@ -4,14 +4,14 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:myFirstProject" d:DataContext="{d:DesignInstance Type=local:VmDeshboard}"
-             mc:Ignorable="d" Width="474" Height="281.2">
+             mc:Ignorable="d" Width="201.583" Height="231.002">
     <Grid Margin="354,0,540,0">
         <Grid.RowDefinitions>
             <RowDefinition Height="246*"/>
             <RowDefinition Height="29*"/>
             <RowDefinition Height="109*"/>
         </Grid.RowDefinitions>
-        <Canvas HorizontalAlignment="Left" Height="225" Margin="-222,47,-105,0" VerticalAlignment="Top" Width="327" Background="#FFE8E0E0" RenderTransformOrigin="0.5,0.5" Grid.RowSpan="3">
+        <Canvas HorizontalAlignment="Left" Height="225" Margin="-349,3,0,0" VerticalAlignment="Top" Width="192" Background="#FFE8E0E0" RenderTransformOrigin="0.5,0.5" Grid.RowSpan="3">
             <Canvas.RenderTransform>
                 <TransformGroup>
                     <ScaleTransform/>
@@ -31,7 +31,7 @@
                 </ProgressBar.RenderTransform>
             </ProgressBar>
             <TextBlock Canvas.Top="193" Text="altimeter" TextWrapping="Wrap" Height="30" Width="86" Background="#FF9D8F8F" FontSize="20" TextAlignment="Center"/>
-            <TextBlock Height="43" Canvas.Left="57" Canvas.Top="146" Text="pitch" TextWrapping="Wrap" Width="74" Foreground="#FFF48A8A" FontSize="18" FontFamily="Arial Rounded MT Bold" FontWeight="SemiBold" FontStyle="Italic" TextAlignment="Center">
+            <TextBlock Height="38" Canvas.Left="91" Canvas.Top="90" Text="pitch" TextWrapping="Wrap" Width="90" Foreground="#FFF48A8A" FontSize="18" FontFamily="Arial Rounded MT Bold" FontWeight="SemiBold" FontStyle="Italic" TextAlignment="Center">
                 <TextBlock.Background>
                     <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
                         <GradientStop Color="Black"/>
@@ -39,7 +39,7 @@
                     </LinearGradientBrush>
                 </TextBlock.Background>
             </TextBlock>
-            <TextBlock Height="45" Canvas.Left="197" Canvas.Top="94" Text="airspeed" TextWrapping="Wrap" Width="90" Foreground="#FFC08C8C" FontSize="18" FontFamily="Arial Rounded MT Bold" FontWeight="SemiBold" FontStyle="Italic" TextAlignment="Center" LineHeight="48" LineStackingStrategy="MaxHeight" FontStretch="SemiCondensed" Cursor="ScrollNE" RenderTransformOrigin="0.539,0.486">
+            <TextBlock Height="39" Canvas.Left="91" Canvas.Top="46" Text="airspeed" TextWrapping="Wrap" Width="90" Foreground="#FFC08C8C" FontSize="18" FontFamily="Arial Rounded MT Bold" FontWeight="SemiBold" FontStyle="Italic" TextAlignment="Center" LineHeight="48" LineStackingStrategy="MaxHeight" FontStretch="SemiCondensed" Cursor="ScrollNE" RenderTransformOrigin="0.539,0.486">
                 <TextBlock.Background>
                     <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
                         <GradientStop Color="Black"/>
@@ -47,7 +47,7 @@
                     </LinearGradientBrush>
                 </TextBlock.Background>
             </TextBlock>
-            <TextBlock Height="43" Canvas.Left="224" Canvas.Top="146" Text="yaw" TextWrapping="Wrap" Width="84" Foreground="#FFEA6B6B" FontSize="18" FontFamily="Arial Rounded MT Bold" FontWeight="SemiBold" FontStyle="Italic" TextAlignment="Center">
+            <TextBlock Height="40" Canvas.Left="91" Canvas.Top="175" Text="yaw" TextWrapping="Wrap" Width="93" Foreground="#FFEA6B6B" FontSize="18" FontFamily="Arial Rounded MT Bold" FontWeight="SemiBold" FontStyle="Italic" TextAlignment="Center">
                 <TextBlock.Background>
                     <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
                         <GradientStop Color="Black"/>
@@ -55,7 +55,7 @@
                     </LinearGradientBrush>
                 </TextBlock.Background>
             </TextBlock>
-            <TextBlock Height="43" Canvas.Left="139" Canvas.Top="146" Text="roll" TextWrapping="Wrap" Width="78" Foreground="#FFB78585" FontSize="18" FontFamily="Arial Rounded MT Bold" FontWeight="SemiBold" FontStyle="Italic" TextAlignment="Center">
+            <TextBlock Height="36" Canvas.Left="91" Canvas.Top="134" Text="roll" TextWrapping="Wrap" Width="90" Foreground="#FFB78585" FontSize="18" FontFamily="Arial Rounded MT Bold" FontWeight="SemiBold" FontStyle="Italic" TextAlignment="Center">
                 <TextBlock.Background>
                     <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
                         <GradientStop Color="Black"/>
@@ -63,8 +63,8 @@
                     </LinearGradientBrush>
                 </TextBlock.Background>
             </TextBlock>
-            <TextBox Canvas.Left="198" Canvas.Top="115" Text="{Binding VM_Airspeed, Mode=OneWay}"  TextWrapping="Wrap" Width="90" Height="22"  Background="{x:Null}" FontSize="18" FontWeight="Bold"  BorderBrush="{x:Null}" TextAlignment="Center" RenderTransformOrigin="1.434,0.113"/>
-            <TextBlock Height="45" Canvas.Left="84" Canvas.Top="94" Text="direction" TextWrapping="Wrap" Width="104" FontSize="18" FontFamily="Arial Rounded MT Bold" FontWeight="SemiBold" FontStyle="Italic" TextAlignment="Center" Foreground="#FFEB9292" RenderTransformOrigin="1.209,0.197">
+            <TextBox Canvas.Left="89" Canvas.Top="61" Text="{Binding VM_Airspeed, Mode=OneWay}"  TextWrapping="Wrap" Width="90" Height="22"  Background="{x:Null}" FontSize="18" FontWeight="Bold"  BorderBrush="{x:Null}" TextAlignment="Center" RenderTransformOrigin="1.434,0.113"/>
+            <TextBlock Height="38" Canvas.Left="91" Text="direction" TextWrapping="Wrap" Width="90" FontSize="18" FontFamily="Arial Rounded MT Bold" FontWeight="SemiBold" FontStyle="Italic" TextAlignment="Center" Foreground="#FFEB9292" RenderTransformOrigin="1.209,0.197" Canvas.Top="1">
                 <TextBlock.Background>
                     <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
                         <GradientStop Color="Black"/>
@@ -72,10 +72,10 @@
                     </LinearGradientBrush>
                 </TextBlock.Background>
             </TextBlock>
-            <TextBlock Height="30" Canvas.Left="138" Canvas.Top="160" Text="{Binding VM_Roll, Mode=OneWay}" TextWrapping="Wrap" Width="78" FontSize="18" TextAlignment="Center" FontWeight="Bold" RenderTransformOrigin="1.4,0.313"/>
-            <TextBlock Height="25" Canvas.Left="82" Canvas.Top="112" Text="{Binding VM_Direction, Mode=OneWay}" TextWrapping="Wrap" Width="104" FontSize="18" FontWeight="Bold" TextAlignment="Center" RenderTransformOrigin="-0.315,0.381"/>
-            <TextBlock Height="29" Canvas.Left="56" Canvas.Top="160" Text="{Binding VM_Pitch, Mode=OneWay}" TextWrapping="Wrap" Width="75" FontSize="18" FontWeight="Bold" TextAlignment="Center" RenderTransformOrigin="0.164,0.56"/>
-            <TextBlock Height="30" Canvas.Left="222" Canvas.Top="160" Text="{Binding VM_Yaw, Mode=OneWay}" TextWrapping="Wrap" Width="86" FontSize="18" FontWeight="Bold" TextAlignment="Center" RenderTransformOrigin="2.176,0.113"/>
+            <TextBlock Height="21" Canvas.Left="95" Canvas.Top="148" Text="{Binding VM_Roll, Mode=OneWay}" TextWrapping="Wrap" Width="78" FontSize="18" TextAlignment="Center" FontWeight="Bold" RenderTransformOrigin="1.4,0.313"/>
+            <TextBlock Height="25" Canvas.Left="83" Canvas.Top="14" Text="{Binding VM_Direction, Mode=OneWay}" TextWrapping="Wrap" Width="104" FontSize="18" FontWeight="Bold" TextAlignment="Center" RenderTransformOrigin="-0.315,0.381"/>
+            <TextBlock Height="24" Canvas.Left="96" Canvas.Top="105" Text="{Binding VM_Pitch, Mode=OneWay}" TextWrapping="Wrap" Width="75" FontSize="18" FontWeight="Bold" TextAlignment="Center" RenderTransformOrigin="0.164,0.56"/>
+            <TextBlock Height="30" Canvas.Left="92" Canvas.Top="189" Text="{Binding VM_Yaw, Mode=OneWay}" TextWrapping="Wrap" Width="86" FontSize="18" FontWeight="Bold" TextAlignment="Center" RenderTransformOrigin="2.176,0.113"/>
 
         </Canvas>
     </Grid>

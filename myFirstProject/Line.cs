@@ -13,13 +13,25 @@ namespace myFirstProject
 
         public float A
         {
-            get;
-            set;
+            get
+            {
+                return a;
+            }
+            set
+            {
+                a = value;
+            }
         }
         public float B
         {
-            get;
-            set;
+            get
+            {
+                return  b;
+            }
+            set
+            {
+                b = value;
+            }
         }
 
        public Line()

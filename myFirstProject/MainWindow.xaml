@@ -6,12 +6,12 @@
         xmlns:local="clr-namespace:myFirstProject" d:DataContext="{d:DesignInstance Type=local:ViewModel}"
         xmlns:Slider="clr-namespace:myFirstProject" 
         xmlns:Deshboard ="clr-namespace:myFirstProject"
-        xmlns:Controler ="clr-namespace:myFirstProject"
         xmlns:Graphs ="clr-namespace:myFirstProject"
+        xmlns:Joystick ="clr-namespace:myFirstProject"
        
         mc:Ignorable="d"
-        Title="MainWindow" Height="551.2" Width="1383.125">
-    <Canvas Margin="0,0,161.6,-22.6" Height="593" VerticalAlignment="Top">
+        Title="MainWindow" Height="551.2" Width="1186.422">
+    <Canvas Margin="0,0,196.4,-1.4" Height="523" VerticalAlignment="Top">
         <Menu Canvas.Top="0" Canvas.Left="0">
             <MenuItem Header="_File" FontSize="24" Width="186">
                 <MenuItem Header="_Upload Csv File" Click="Open_Click" />
@@ -27,12 +27,10 @@
         </Menu>
         <TextBox AcceptsReturn="True" />
         <TextBox AcceptsReturn="True" />
+        <Joystick:JoystickControler x:Name="joystickCont" Canvas.Left="482" Height="422" Width="492" Canvas.Top="10" ></Joystick:JoystickControler>
         <Slider:SliderControl x:Name="sliderCont"  Width="712" Height="41" Canvas.Left="29" Canvas.Top="468"></Slider:SliderControl>
-        <Deshboard:deshboard x:Name="deshboardCont" Width="478" Canvas.Left="877" Height="282" Canvas.Top="34" />
-
-
-        <Controler:Controler x:Name="controlerCont"  Width="360" Height="353" Canvas.Left="512" Canvas.Top="10" Loaded="controlerCont_Loaded" ></Controler:Controler>
-        <Graphs:GraphControl x:Name="graphCont"  Width="360" Height="418" Canvas.Top="34" />
+        <Deshboard:deshboard x:Name="deshboardCont" Width="204" Canvas.Left="981" Height="239" Canvas.Top="10" />
+        <Graphs:GraphControl x:Name="graphCont"  Width="216" Height="413" Canvas.Top="34" Loaded="graphCont_Loaded" />
     </Canvas>
 
 </Window>

@@ -30,6 +30,7 @@ namespace myFirstProject
 		VmControler vmcont;
 
         VmGraph vm_graph;
+		
 
         public MainWindow()
 		{
@@ -41,8 +42,7 @@ namespace myFirstProject
 			vmDeshboard = new VmDeshboard(m);
 			deshboardCont.VM_deshboard = vmDeshboard;
 			vmcont = new VmControler(m);
-			controlerCont.Vm_Controler = vmcont;
-
+			joystickCont.Vm_Controler = vmcont;
             vm_graph = new VmGraph(m);
             graphCont.VM_Graph = vm_graph;
 
@@ -91,6 +91,11 @@ namespace myFirstProject
         }
 
         private void controlerCont_Loaded(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void graphCont_Loaded(object sender, RoutedEventArgs e)
         {
 
         }

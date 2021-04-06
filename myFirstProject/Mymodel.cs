@@ -5,6 +5,7 @@ using System.ComponentModel;
 using System.IO;
 using System.Linq;
 using System.Threading;
+using System.Web.UI.MobileControls;
 using System.Xml;
 using System.Xml.Linq;
 
@@ -13,6 +14,8 @@ namespace myFirstProject
     public class MyModel : InterfaceModel
     {
         Dictionary<string, int> myMap = new Dictionary<string, int>();
+        List<string> myfeatures = new List<string>();
+        private animaly_detection anomaly = new animaly_detection();
         List<List<float>> myData;
         private int cols;
         private int rows;
@@ -142,7 +145,7 @@ namespace myFirstProject
             get { return aileron; }
             set
             {
-                aileron = value;
+                aileron = 125 + 100 * value;
                 NotifyPropertyChanged("Aileron");
             }
         }
@@ -151,7 +154,7 @@ namespace myFirstProject
             get { return elevator; }
             set
             {
-                elevator = value;
+                elevator = 125 + 100 * value;
                 NotifyPropertyChanged("Elevator");
             }
 
@@ -265,6 +268,7 @@ namespace myFirstProject
             {
 
                 string a = name[i].InnerText;
+                myfeatures.Add(a);
                 myMap[a] = i;
                 j++;
             }
@@ -274,18 +278,11 @@ namespace myFirstProject
 
         public float findElement(string feature)
         {
-            int index = myMap[feature];
+            // int index = myMap[feature];
+            int index = myfeatures.FindIndex(a => a.Contains(feature));
             List<float> list = myData.ElementAt(index);
             return list.ElementAt(IndexRow);
         }
-        public void check(string feature)
-        {
-            int index = myMap[feature];
-            List<float> list = myData.ElementAt(index);
-
-        }
-
-
 
         public event PropertyChangedEventHandler PropertyChanged;
 
@@ -377,17 +374,17 @@ namespace myFirstProject
 
 
 
-        public Dictionary<string, int> ColumnMap
+        public List<string> ColumnList
         {
             get
             {
-                return myMap;
+                return myfeatures;
             }
         }
 
 
         // map of the corelations of all features
-        private Dictionary<string, string> corelationMap;
+        private List<KeyValuePair<string, string>> corelationMap;
         
 
 
@@ -462,7 +459,8 @@ namespace myFirstProject
 
         public void setMainGraphList(string column)
         {
-            List<float> cornentColumn = myData[myMap[column]];
+            int index = myfeatures.FindIndex(a => a.Contains(column));
+            List<float> cornentColumn = myData[index];
             List<DataPoint> newDataPoints = new List<DataPoint>();
             int i = 0;
             foreach (float num in cornentColumn)
@@ -478,13 +476,84 @@ namespace myFirstProject
 
             MainGraphName = column;
             MainGraphList = newDataPoints;
-            SecondGraphName = corelationMap[column];
+            SecondGraphName = get_element(column);
             setSecondGraphList(SecondGraphName);
+            setLineReg();
+        }
+        public void setLineReg()
+        {
+            
+            int index = myfeatures.FindIndex(a => a.Contains(MainGraphName));
+            List<float> X = myData[index];
+            X.ToArray();
+
+             index = myfeatures.FindIndex(a => a.Contains(SecondGraphName));
+            List<float> Y= myData[index];
+            Y.ToArray();
+            Point[] ps = new Point[X.Count];
+
+            for (int i = 0; i < X.Count; ++i)
+            {
+                ps[i] = new Point(X[i], Y[i]);
+            }
+            Points = ps;
+            Line l =  anomaly.linear_reg(ps, ps.Length);
+
+            List<DataPoint> AandB = new List<DataPoint>();
+            AandB.Add(new DataPoint(l.A,l.B));
+            AandB.Add(new DataPoint(10, 10));
+            AandB.Add(new DataPoint(100, 11));
+
+            LineReg = AandB;
         }
 
+        private Point[] points;
+
+        public Point[] Points
+        {
+            set
+            {
+                points = value;
+                NotifyPropertyChanged("Points");
+            }
+            get
+            {
+                return points;
+            }
+        }
+
+
+        private List<DataPoint> lineReg;
+        public List<DataPoint> LineReg
+        {
+            set
+            {
+                lineReg = value;
+
+                NotifyPropertyChanged("LineReg");
+            }
+            get
+            {
+                return lineReg;
+            }
+        }
+
+        public string get_element(string col)
+        {
+            foreach(var i in corelationMap)
+            {
+                if (i.Key.Equals(col))
+                {
+                    return i.Value;
+                }
+                
+            }
+            return null;
+        }
         public void setSecondGraphList(string column)
         {
-            List<float> cornentColumn = myData[myMap[column]];
+            int index = myfeatures.FindIndex(a => a.Contains(column));
+            List<float> cornentColumn = myData[index];
             List<DataPoint> newDataPoints = new List<DataPoint>();
             int i = 0;
             foreach (float num in cornentColumn)
@@ -504,16 +573,16 @@ namespace myFirstProject
         }
         public void pearson()
         {
-            animaly_detection anomaly = new animaly_detection();
-            corelationMap = new Dictionary<string, string>();
+          
+            corelationMap = new List<KeyValuePair<string, string>>();
             int i;
-            for (i = 0; i < myMap.Count; i++)
+            for (i = 0; i < myfeatures.Count; i++)
             {
 
                 List<float> feathre_one = myData.ElementAt(i);
                 float max = 0;
                 int index = 0;
-                for (int j = 0; j < myMap.Count; j++)
+                for (int j = 0; j < myfeatures.Count; j++)
                 {
                     if (i != j)
                     {
@@ -529,19 +598,12 @@ namespace myFirstProject
                         }
                     }
                 }
-                corelationMap.Add(myMap.ElementAt(i).Key, myMap.ElementAt(index).Key);
+                corelationMap.Add(new KeyValuePair <string,string>( myfeatures.ElementAt(i), myfeatures.ElementAt(index)));
+                //corelationMap.Add(myMap.ElementAt(i).Key, myMap.ElementAt(index).Key);
             }
             
         }
-        void print()
-        {
-
-        }
-
-        void orint2() { 
-        }
-
-
+        
     }
 
 }

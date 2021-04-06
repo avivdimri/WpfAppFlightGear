@@ -55,9 +55,8 @@ namespace myFirstProject
         {
             get
             {
-                float max = (float) 0.214314;
-                float min = (float)-0.343772;
-                return (model.Aileron - min) / (max - min) * 100;
+               
+                return model.Aileron;
 
             }
 
@@ -66,9 +65,8 @@ namespace myFirstProject
         {
             get
             {
-                float max = (float) 0.16409;
-                float min = (float) -0.904754;
-                return (model.Elevator - min) / (max - min) * 100;
+
+                return model.Elevator;
 
             }
 
