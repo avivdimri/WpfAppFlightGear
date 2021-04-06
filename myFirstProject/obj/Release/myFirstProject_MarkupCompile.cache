@@ -4,15 +4,15 @@
 winexe
 C#
 .cs
-C:\Users\Yehudit\source\repos\git\WpfAppFlightGear\myFirstProject\obj\Debug\
+C:\Users\Yehudit\source\repos\git\WpfAppFlightGear\myFirstProject\obj\Release\
 myFirstProject
 none
 false
-DEBUG;TRACE
+TRACE
 C:\Users\Yehudit\source\repos\git\WpfAppFlightGear\myFirstProject\App.xaml
 5-2089539857
 
-21-1012207010
+20-169847643
 17-1980922221
 Controler.xaml;deshboard.xaml;GraphControl.xaml;MainWindow.xaml;SliderControl.xaml;
 
