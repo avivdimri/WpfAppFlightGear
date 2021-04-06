@@ -259,7 +259,7 @@ namespace myFirstProject
         {
             int i, j = 0;
             XmlDocument xdoc = new XmlDocument();
-            xdoc.Load("C:/Users/Yehudit/Desktop/aviv/my_first_project/yosi058/WpfDesktopAPP/myFirstProject/myFirstProject/playback_small.xml");
+            xdoc.Load("C:/Program Files/FlightGear 2020.3.6/data/Protocol/playback_small.xml");
             XmlNodeList name = xdoc.GetElementsByTagName("name");
             for (i = 0; i < name.Count / 2; i++)
             {
@@ -451,15 +451,18 @@ namespace myFirstProject
                 int index = 0;
                 for (int j = 0; j < myMap.Count; j++)
                 {
-                    float num;
-                    List<float> feathre_tow = myData.ElementAt(j);
-                    float[] arr_one = feathre_one.ToArray();
-                    float[] arr_tow = feathre_one.ToArray();
-                    num = anomaly.pearson(arr_one, arr_tow, arr_one.Length);
-                    if (num > max)
+                    if (i != j)
                     {
-                        max = num;
-                        index = j;
+                        float num = 0;
+                        List<float> feathre_tow = myData.ElementAt(j);
+                        float[] arr_one = feathre_one.ToArray();
+                        float[] arr_tow = feathre_tow.ToArray();
+                        num = Math.Abs(anomaly.pearson(arr_one, arr_tow, arr_one.Length));
+                        if (num > max)
+                        {
+                            max = num;
+                            index = j;
+                        }
                     }
                 }
                 my_dictionary.Add(myMap.ElementAt(i).Key, myMap.ElementAt(index).Key);

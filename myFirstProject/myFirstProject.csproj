@@ -63,6 +63,7 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="animaly_detection.cs" />
     <Compile Include="Controler.xaml.cs">
       <DependentUpon>Controler.xaml</DependentUpon>
     </Compile>
@@ -72,6 +73,7 @@
     <Compile Include="GraphControl.xaml.cs">
       <DependentUpon>GraphControl.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Line.cs" />
     <Compile Include="SliderControl.xaml.cs">
       <DependentUpon>SliderControl.xaml</DependentUpon>
     </Compile>
