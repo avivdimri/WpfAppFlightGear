@@ -384,6 +384,7 @@ namespace myFirstProject
         }
 
 
+
         private List<DataPoint> mainGraphList;
 
 
@@ -415,6 +416,40 @@ namespace myFirstProject
             }
         }
 
+
+
+
+        private List<DataPoint> secondGraphList;
+
+
+        public List<DataPoint> SecondGraphList
+        {
+            set
+            {
+                secondGraphList = value;
+                NotifyPropertyChanged("MainGraphList");
+            }
+            get
+            {
+                return secondGraphList;
+            }
+        }
+
+
+        private string secondGraphName = "rudder";
+
+        public string SecondGraphName
+        {
+            set
+            {
+                secondGraphName = value;
+                NotifyPropertyChanged("SecondGraphName");
+            }
+            get
+            {
+                return secondGraphName;
+            }
+        }
 
 
         public void setMainGraphList(string column)
