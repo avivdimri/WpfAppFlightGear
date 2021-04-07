@@ -48,6 +48,11 @@ namespace myFirstProject
         {
             return a * x + b;
         }
+
+        public float X_line(float y)
+        {
+            return (y - b) / a;
+        }
     }
 
     public class Point

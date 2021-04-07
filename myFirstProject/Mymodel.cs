@@ -481,6 +481,8 @@ namespace myFirstProject
             setLineReg();
             //setPoints_reg();
         }
+
+
         public void setLineReg()
         {
             
@@ -491,13 +493,15 @@ namespace myFirstProject
              index = myfeatures.FindIndex(a => a.Contains(SecondGraphName));
             List<float> Y= myData[index];
             float[] tow_Y =Y.ToArray();
+
             Point[] ps = new Point[one_X.Length];
             List<DataPoint>temp_points= new List<DataPoint>();
+
 
             for (int i = 0; i < X.Count; ++i)
             {
                 ps[i] = new Point(one_X[i], tow_Y[i]);
-                if(i>(indexRow-300) && i <= indexRow)
+                if (i > (indexRow - 300) && i <= indexRow) 
                 {
                     temp_points.Add(new DataPoint(one_X[i], tow_Y[i]));
                 }
@@ -509,6 +513,7 @@ namespace myFirstProject
 
             for (int i = 0; i < X.Count; ++i)
             {
+                cor_point.Add(new DataPoint(l.X_line(Y[i]), Y[i]));
                 cor_point.Add(new DataPoint(X[i], l.f(X[i])));
             }
 
@@ -518,6 +523,10 @@ namespace myFirstProject
             
             LineReg = cor_point;
             Points_reg = temp_points;
+        }
+        public double X_line(double a, double b, double y)
+        {
+            return (y - b) / a;
         }
 
         private List<DataPoint> points_reg;
@@ -614,16 +623,17 @@ namespace myFirstProject
                 corelationMap.Add(new KeyValuePair <string,string>( myfeatures.ElementAt(i), myfeatures.ElementAt(index)));
               
             }
-            StreamWriter sw = new StreamWriter("C:/Users/yosef/Source/Repos/WpfDesktopAPP/Test.txt");
+
+            //StreamWriter sw = new StreamWriter("C:/Users/yosef/Source/Repos/WpfDesktopAPP/Test.txt");
           
-            foreach(KeyValuePair<string, string> k in corelationMap)
-            {
-                sw.Write(k.Key);
-                sw.Write(" -- ");
-                sw.WriteLine(k.Value);
-            }
+            //foreach(KeyValuePair<string, string> k in corelationMap)
+            //{
+              //  sw.Write(k.Key);
+              //  sw.Write(" -- ");
+              //  sw.WriteLine(k.Value);
+            //}
            
-            sw.Close();
+            //sw.Close();
             //corelationMap.Add(myMap.ElementAt(i).Key, myMap.ElementAt(index).Key);
 
 
