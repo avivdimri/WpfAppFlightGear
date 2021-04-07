@@ -1,13 +1,47 @@
-﻿<UserControl x:Class="FlightSimulator.Views.Joystick"
+﻿<UserControl x:Class="myFirstProject.JoystickControler"
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
-             mc:Ignorable="d" 
-             d:DesignHeight="450" d:DesignWidth="800">
-    <Grid>
-        <Canvas  x:Name="Base" Margin="0" Width="340" Height="340">
-            <Ellipse HorizontalAlignment="Left" Height="340" VerticalAlignment="Top" Width="340">
+             xmlns:local="clr-namespace:myFirstProject" d:DataContext="{d:DesignInstance Type=local:VmControler}"
+             mc:Ignorable="d" Width="503.587" Height="417.718">
+
+    <Grid Margin="0,63,0,30.6">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="0*"/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+
+        <Canvas Margin="110,0,10.2,0" Grid.RowSpan="2">
+            <ProgressBar Width="220" Height="20" Value="{Binding ElementName=slider1, Path=Value}" Canvas.Left="-147" RenderTransformOrigin="0.685,0.44" Canvas.Top="264">
+                <ProgressBar.Foreground>
+                    <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                        <GradientStop Color="Black"/>
+                        <GradientStop Color="#FFC14343" Offset="1"/>
+                    </LinearGradientBrush>
+                </ProgressBar.Foreground>
+                <ProgressBar.Background>
+                    <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                        <GradientStop Color="Black"/>
+                        <GradientStop Color="#FF1FBF89" Offset="1"/>
+                    </LinearGradientBrush>
+                </ProgressBar.Background>
+            </ProgressBar>
+        </Canvas>
+        <Canvas Margin="641,3,-583.8,-66" Grid.Row="1">
+            <ProgressBar Width="220" Height="21" Value="{Binding VM_Throttle, Mode=OneWay}" Canvas.Top="236"  Background="white" Foreground="Green" Canvas.Left="-564">
+                <ProgressBar.RenderTransform>
+                    <TransformGroup>
+                        <ScaleTransform/>
+                        <SkewTransform/>
+                        <RotateTransform Angle="-90"/>
+                        <TranslateTransform/>
+                    </TransformGroup>
+                </ProgressBar.RenderTransform>
+            </ProgressBar>
+        </Canvas>
+        <Canvas  x:Name="Base" Margin="153,3,83.2,-20" Grid.Row="1">
+            <Ellipse HorizontalAlignment="Left" Height="340" VerticalAlignment="Top" Width="340" Canvas.Top="2" Canvas.Left="-1">
                 <Ellipse.Fill>
                     <RadialGradientBrush>
                         <GradientStop Color="#FF2C2A2A" Offset="1" />
@@ -47,7 +81,7 @@
                 </Path.RenderTransform>
             </Path>
 
-            <Canvas  x:Name="Knob" VerticalAlignment="Top" HorizontalAlignment="Left" Width="0" Height="0" RenderTransformOrigin="0.5,0.5" Canvas.Left="125" Canvas.Top="125">
+            <Canvas  x:Name="Knob" VerticalAlignment="Top" HorizontalAlignment="Left" Width="0" Height="0" RenderTransformOrigin="0.5,0.5" Canvas.Left="{Binding VM_Aileron}" Canvas.Top="{Binding VM_Elevator}">
                 <!--<Ellipse x:Name="Shadow" HorizontalAlignment="Left" Height="88" VerticalAlignment="Top" Width="86" Fill="#52131212" Canvas.Left="22" Canvas.Top="18" />-->
                 <Ellipse x:Name="KnobBase" HorizontalAlignment="Left" Height="90" VerticalAlignment="Top" Width="90" RenderTransformOrigin="0.5,0.5" Canvas.Top="1">
                     <Ellipse.Fill>
@@ -117,7 +151,7 @@
                 </Canvas.RenderTransform>
                 <Canvas.Resources>
 
-                    <Storyboard x:Key="CenterKnob" Name="centerKnob" Completed="centerKnob_Completed">
+                    <Storyboard x:Key="CenterKnob" Name="centerKnob">
 
                         <DoubleAnimation Storyboard.TargetName="knobPosition"
                              Storyboard.TargetProperty="X" To="0" Duration="0:0:0.2">

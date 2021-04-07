@@ -13,13 +13,25 @@ namespace myFirstProject
 
         public float A
         {
-            get;
-            set;
+            get
+            {
+                return a;
+            }
+            set
+            {
+                a = value;
+            }
         }
         public float B
         {
-            get;
-            set;
+            get
+            {
+                return  b;
+            }
+            set
+            {
+                b = value;
+            }
         }
 
        public Line()
@@ -45,13 +57,23 @@ namespace myFirstProject
 
         public float X
         {
-            get;
-            set;
+            get {
+                return x;
+                }
+
+            set {
+                x = value;
+            }
         }
         public float Y
         {
-            get;
-            set;
+            get
+            {
+                return y;
+            }
+            set {
+                y = value;
+            }
         }
         public Point(float x, float y) {
            this.x = x;

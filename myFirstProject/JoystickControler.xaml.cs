@@ -16,12 +16,12 @@ using System.Windows.Shapes;
 namespace myFirstProject
 {
     /// <summary>
-    /// Interaction logic for Controler.xaml
+    /// Interaction logic for JoystickControler.xaml
     /// </summary>
-    public partial class Controler : UserControl
+    public partial class JoystickControler : UserControl
     {
         VmControler vm;
-        public Controler()
+        public JoystickControler()
         {
             InitializeComponent();
         }
@@ -39,6 +39,5 @@ namespace myFirstProject
                 //slider.Maximum = vm.VM_NumRows;
             }
         }
-       
     }
 }

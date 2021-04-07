@@ -27,6 +27,7 @@ C:\Users\Ori\source\repos\wpfProject\myFirstProject\obj\Debug\myFirstProject.csp
 C:\Users\Ori\source\repos\wpfProject\myFirstProject\obj\Debug\myFirstProject.csproj.CopyComplete
 C:\Users\Ori\source\repos\wpfProject\myFirstProject\obj\Debug\myFirstProject.exe
 C:\Users\Ori\source\repos\wpfProject\myFirstProject\obj\Debug\myFirstProject.pdb
+<<<<<<< HEAD
 C:\Users\yosef\Source\Repos\WpfAppFlightGear\myFirstProject\bin\Debug\myFirstProject.exe.config
 C:\Users\yosef\Source\Repos\WpfAppFlightGear\myFirstProject\bin\Debug\myFirstProject.exe
 C:\Users\yosef\Source\Repos\WpfAppFlightGear\myFirstProject\bin\Debug\myFirstProject.pdb
@@ -56,3 +57,38 @@ C:\Users\yosef\Source\Repos\WpfAppFlightGear\myFirstProject\obj\Debug\myFirstPro
 C:\Users\yosef\Source\Repos\WpfAppFlightGear\myFirstProject\obj\Debug\myFirstProject.csproj.CopyComplete
 C:\Users\yosef\Source\Repos\WpfAppFlightGear\myFirstProject\obj\Debug\myFirstProject.exe
 C:\Users\yosef\Source\Repos\WpfAppFlightGear\myFirstProject\obj\Debug\myFirstProject.pdb
+=======
+C:\Users\Yehudit\source\repos\git\WpfAppFlightGear\myFirstProject\bin\Debug\myFirstProject.exe.config
+C:\Users\Yehudit\source\repos\git\WpfAppFlightGear\myFirstProject\bin\Debug\myFirstProject.exe
+C:\Users\Yehudit\source\repos\git\WpfAppFlightGear\myFirstProject\bin\Debug\myFirstProject.pdb
+C:\Users\Yehudit\source\repos\git\WpfAppFlightGear\myFirstProject\bin\Debug\OxyPlot.dll
+C:\Users\Yehudit\source\repos\git\WpfAppFlightGear\myFirstProject\bin\Debug\OxyPlot.Wpf.dll
+C:\Users\Yehudit\source\repos\git\WpfAppFlightGear\myFirstProject\bin\Debug\OxyPlot.xml
+C:\Users\Yehudit\source\repos\git\WpfAppFlightGear\myFirstProject\bin\Debug\OxyPlot.Wpf.xml
+C:\Users\Yehudit\source\repos\git\WpfAppFlightGear\myFirstProject\obj\Debug\myFirstProject.csprojAssemblyReference.cache
+C:\Users\Yehudit\source\repos\git\WpfAppFlightGear\myFirstProject\obj\Debug\Controler.g.cs
+C:\Users\Yehudit\source\repos\git\WpfAppFlightGear\myFirstProject\obj\Debug\deshboard.g.cs
+C:\Users\Yehudit\source\repos\git\WpfAppFlightGear\myFirstProject\obj\Debug\GraphControl.g.cs
+C:\Users\Yehudit\source\repos\git\WpfAppFlightGear\myFirstProject\obj\Debug\MainWindow.g.cs
+C:\Users\Yehudit\source\repos\git\WpfAppFlightGear\myFirstProject\obj\Debug\SliderControl.g.cs
+C:\Users\Yehudit\source\repos\git\WpfAppFlightGear\myFirstProject\obj\Debug\App.g.cs
+C:\Users\Yehudit\source\repos\git\WpfAppFlightGear\myFirstProject\obj\Debug\GeneratedInternalTypeHelper.g.cs
+C:\Users\Yehudit\source\repos\git\WpfAppFlightGear\myFirstProject\obj\Debug\myFirstProject_MarkupCompile.cache
+C:\Users\Yehudit\source\repos\git\WpfAppFlightGear\myFirstProject\obj\Debug\myFirstProject_MarkupCompile.lref
+C:\Users\Yehudit\source\repos\git\WpfAppFlightGear\myFirstProject\obj\Debug\Controler.baml
+C:\Users\Yehudit\source\repos\git\WpfAppFlightGear\myFirstProject\obj\Debug\deshboard.baml
+C:\Users\Yehudit\source\repos\git\WpfAppFlightGear\myFirstProject\obj\Debug\GraphControl.baml
+C:\Users\Yehudit\source\repos\git\WpfAppFlightGear\myFirstProject\obj\Debug\MainWindow.baml
+C:\Users\Yehudit\source\repos\git\WpfAppFlightGear\myFirstProject\obj\Debug\SliderControl.baml
+C:\Users\Yehudit\source\repos\git\WpfAppFlightGear\myFirstProject\obj\Debug\myFirstProject.g.resources
+C:\Users\Yehudit\source\repos\git\WpfAppFlightGear\myFirstProject\obj\Debug\myFirstProject.Properties.Resources.resources
+C:\Users\Yehudit\source\repos\git\WpfAppFlightGear\myFirstProject\obj\Debug\myFirstProject.csproj.GenerateResource.cache
+C:\Users\Yehudit\source\repos\git\WpfAppFlightGear\myFirstProject\obj\Debug\myFirstProject.csproj.CoreCompileInputs.cache
+C:\Users\Yehudit\source\repos\git\WpfAppFlightGear\myFirstProject\obj\Debug\myFirstProject.csproj.CopyComplete
+C:\Users\Yehudit\source\repos\git\WpfAppFlightGear\myFirstProject\obj\Debug\myFirstProject.exe
+C:\Users\Yehudit\source\repos\git\WpfAppFlightGear\myFirstProject\obj\Debug\myFirstProject.pdb
+C:\Users\Yehudit\source\repos\git\WpfAppFlightGear\myFirstProject\obj\Debug\JoystickControler.g.cs
+C:\Users\Yehudit\source\repos\git\WpfAppFlightGear\myFirstProject\obj\Debug\JoystickControler.baml
+>>>>>>> bf4978d2ae59b763c56f40c31c17c97b4431e6e4
+C:\Users\yosef\Source\Repos\WpfAppFlightGear\myFirstProject\obj\Debug\JoystickControler.g.cs
+C:\Users\yosef\Source\Repos\WpfAppFlightGear\myFirstProject\obj\Debug\JoystickControler.baml

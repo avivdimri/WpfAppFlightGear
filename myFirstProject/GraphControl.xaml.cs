@@ -64,17 +64,18 @@ namespace myFirstProject
                 myStack.Children.Clear();
                 List<string> myList = new List<string> { "flaps", "slats", "speedbrake" };
 
-                Dictionary<string, int> columnMap = vm.getColumnMap();
+                //Dictionary<string, int> columnMap = vm.getColumnMap();
+                List<string> list_col = vm.getColumnList();
 
 
-                foreach (KeyValuePair<string, int> pair in columnMap)
+                foreach (string i in list_col)
                 {
 
 
 
                     Button newB = new Button();
                     //newB.Name = pair.Key;
-                    newB.Content = pair.Key;
+                    newB.Content = i;
                     myStack.Children.Add(newB);
                     newB.Click += new RoutedEventHandler(Button_setMainGraphList);
                 }

@@ -83,7 +83,7 @@
             </Canvas>
 
             <Canvas Grid.Row="1" Grid.Column="1">
-                <ProgressBar Width="220" Height="45" Value="{Binding VM_Throttle, Mode=OneWay}" Canvas.Top="220"  Background="white" Foreground="Green" ValueChanged="ProgressBar_ValueChanged">
+                <ProgressBar Width="220" Height="45" Value="{Binding VM_Throttle, Mode=OneWay}" Canvas.Top="220"  Background="white" Foreground="Green">
                     <ProgressBar.RenderTransform>
                         <TransformGroup>
                             <ScaleTransform/>

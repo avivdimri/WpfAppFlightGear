@@ -14,9 +14,9 @@ namespace myFirstProject
         private MyModel model;
 
 
-        public Dictionary<string, int> getColumnMap()
+        public List<string> getColumnList()
         {
-            return model.ColumnMap;
+            return model.ColumnList;
         }
 
         public bool VM_IsAfterLoad
@@ -90,6 +90,36 @@ namespace myFirstProject
                 return model.SecondGraphName;
             }
         }
+
+
+
+        public List<DataPoint> VM_Points
+        {
+            set
+            {
+                model.Points_reg = value;
+            }
+            get
+            {
+                return model.Points_reg;
+            }
+        }
+
+
+       
+        public List<DataPoint> VM_LineReg
+        {
+            set
+            {
+                model.LineReg = value;
+            }
+            get
+            {
+                Console.WriteLine("AVIV oriiiii");
+                return model.LineReg;
+            }
+        }
+
     }
 
 
