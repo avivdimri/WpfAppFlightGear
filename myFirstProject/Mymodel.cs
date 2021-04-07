@@ -340,7 +340,9 @@ namespace myFirstProject
             Direction = findElement("heading-deg");
 
             setMainGraphList(MainGraphName);
-            setSecondGraphList(SecondGraphName);
+            //setSecondGraphList(SecondGraphName);
+
+            setLineReg();
             setTime();
         }
 
@@ -459,6 +461,39 @@ namespace myFirstProject
 
         public void setMainGraphList(string column)
         {
+            /*** int index = myfeatures.FindIndex(a => a.Contains(column));
+             List<float> cornentColumn = myData[index];
+             List<DataPoint> newDataPoints = new List<DataPoint>();
+             int i = 0;
+             foreach (float num in cornentColumn)
+             {
+
+                 newDataPoints.Add(new DataPoint(i++, num));
+                 if (i > IndexRow)
+                 {
+                     break;
+                 }
+
+             }
+
+
+             MainGraphList = newDataPoints;
+              ***/
+
+            MainGraphList = setGraphList(MainGraphName);
+
+            SecondGraphName = get_element(column);
+
+            SecondGraphList = setGraphList(SecondGraphName); 
+
+
+            //setSecondGraphList(SecondGraphName);
+           
+        }
+
+
+        public List<DataPoint> setGraphList(string column)
+        {
             int index = myfeatures.FindIndex(a => a.Contains(column));
             List<float> cornentColumn = myData[index];
             List<DataPoint> newDataPoints = new List<DataPoint>();
@@ -473,13 +508,7 @@ namespace myFirstProject
                 }
 
             }
-
-            MainGraphName = column;
-            MainGraphList = newDataPoints;
-            SecondGraphName = get_element(column);
-            setSecondGraphList(SecondGraphName);
-            setLineReg();
-            //setPoints_reg();
+            return newDataPoints;
         }
 
 
@@ -572,6 +601,9 @@ namespace myFirstProject
             }
             return null;
         }
+
+
+        /***
         public void setSecondGraphList(string column)
         {
             int index = myfeatures.FindIndex(a => a.Contains(column));
@@ -593,6 +625,10 @@ namespace myFirstProject
             SecondGraphList = newDataPoints;
 
         }
+        ***/
+
+
+
         public void pearson()
         {
           
@@ -623,22 +659,6 @@ namespace myFirstProject
                 corelationMap.Add(new KeyValuePair <string,string>( myfeatures.ElementAt(i), myfeatures.ElementAt(index)));
               
             }
-
-            //StreamWriter sw = new StreamWriter("C:/Users/yosef/Source/Repos/WpfDesktopAPP/Test.txt");
-          
-            //foreach(KeyValuePair<string, string> k in corelationMap)
-            //{
-              //  sw.Write(k.Key);
-              //  sw.Write(" -- ");
-              //  sw.WriteLine(k.Value);
-            //}
-           
-            //sw.Close();
-            //corelationMap.Add(myMap.ElementAt(i).Key, myMap.ElementAt(index).Key);
-
-
-
-
         }
 
     }

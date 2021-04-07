@@ -71,6 +71,10 @@ namespace myFirstProject
             {
                 return model.MainGraphName;
             }
+            set
+            {
+                model.MainGraphName = value;
+            }
         }
 
         public List<DataPoint> VM_SecondGraphList
@@ -115,7 +119,6 @@ namespace myFirstProject
             }
             get
             {
-                Console.WriteLine("AVIV oriiiii");
                 return model.LineReg;
             }
         }

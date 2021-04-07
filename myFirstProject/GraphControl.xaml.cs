@@ -54,7 +54,8 @@ namespace myFirstProject
 
         private void Button_setMainGraphList(object sender, RoutedEventArgs e)
         {
-            vm.VM_setMainGraphList(((Button)sender).Content.ToString());
+            vm.VM_MainGraphName = ((Button)sender).Content.ToString();
+            //vm.VM_setMainGraphList(((Button)sender).Content.ToString());
         }
 
         private void showGraphs(object sender, RoutedEventArgs e)
@@ -62,9 +63,9 @@ namespace myFirstProject
             if (vm.VM_IsAfterLoad)
             {
                 myStack.Children.Clear();
-                List<string> myList = new List<string> { "flaps", "slats", "speedbrake" };
+              
 
-                //Dictionary<string, int> columnMap = vm.getColumnMap();
+             
                 List<string> list_col = vm.getColumnList();
 
 
@@ -74,17 +75,15 @@ namespace myFirstProject
 
 
                     Button newB = new Button();
-                    //newB.Name = pair.Key;
+                   
+                    
                     newB.Content = i;
                     myStack.Children.Add(newB);
                     newB.Click += new RoutedEventHandler(Button_setMainGraphList);
                 }
             }
 
-            //Button b1 = new Button();
-            //b1.Name = "myB";
-            //b1.Content = "myName";
-            //myStack.Children.Add(b1);
+           
         }
     }
 }
