@@ -10,7 +10,7 @@
         xmlns:Joystick ="clr-namespace:myFirstProject"
        
         mc:Ignorable="d"
-        Title="MainWindow" Height="551.2" Width="831.737">
+        Title="MainWindow" Height="551.2" Width="794.591">
     <Canvas Margin="0,0,196.4,-1.4" Height="523" VerticalAlignment="Top">
         <Menu Canvas.Top="0" Canvas.Left="0">
             <MenuItem Header="_File" FontSize="24" Width="186">
@@ -27,7 +27,7 @@
         </Menu>
         <TextBox AcceptsReturn="True" />
         <TextBox AcceptsReturn="True" />
-        <Joystick:JoystickControler x:Name="joystickCont" Canvas.Left="596" Height="161" Width="207" Canvas.Top="279" RenderTransformOrigin="0.5,0.5" >
+        <Joystick:JoystickControler x:Name="joystickCont" Canvas.Left="590" Height="161" Width="206" Canvas.Top="279" RenderTransformOrigin="0.5,0.5" >
             <Joystick:JoystickControler.RenderTransform>
                 <TransformGroup>
                     <ScaleTransform/>
@@ -37,8 +37,8 @@
                 </TransformGroup>
             </Joystick:JoystickControler.RenderTransform>
         </Joystick:JoystickControler>
-        <Slider:SliderControl x:Name="sliderCont"  Width="712" Height="41" Canvas.Left="29" Canvas.Top="468"></Slider:SliderControl>
-        <Deshboard:deshboard x:Name="deshboardCont" Width="204" Canvas.Left="598" Height="239" Canvas.Top="34" />
+        <Slider:SliderControl x:Name="sliderCont"  Width="712" Height="41" Canvas.Top="468" Canvas.Left="-3"/>
+        <Deshboard:deshboard x:Name="deshboardCont" Width="160" Canvas.Left="598" Height="216" Canvas.Top="34" />
         <Graphs:GraphControl x:Name="graphCont"  Width="216" Height="413" Canvas.Top="34" Loaded="graphCont_Loaded" />
     </Canvas>
 
