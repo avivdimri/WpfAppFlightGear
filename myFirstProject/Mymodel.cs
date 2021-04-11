@@ -16,10 +16,12 @@ namespace myFirstProject
         Dictionary<string, int> myMap = new Dictionary<string, int>();
         List<string> myfeatures = new List<string>();
         private animaly_detection anomaly = new animaly_detection();
-        List<List<float>> myData;
+        List<List<float>> data_train;
+        List<List<float>> data_test;
         private int cols;
-        private int rows;
-        private LinkedList<string> mylist = new LinkedList<string>();
+        //private int rows;
+        private LinkedList<string> mylist_train = new LinkedList<string>();
+        private LinkedList<string> mylist_test = new LinkedList<string>();
         private InterfaceClient client;
         private int speedsend = 50;
         private bool stop;
@@ -37,7 +39,52 @@ namespace myFirstProject
         private float pitch;
         private float yaw;
         private string time = "00:00:00";
+        private dynamic dynamic_load=null;
 
+        public dynamic Dynamic_load
+        {
+            get
+            {
+                return dynamic_load;
+            }
+            set
+            {
+                dynamic_load = value;
+                NotifyPropertyChanged("Dynamic_load");
+            }
+        }
+
+        //public List<List<float>> getmydata()
+        //{
+        //    return data_train;
+        //}
+        public List<List<float>> Data_train
+        {
+            set
+            {
+                data_train = value;
+                NotifyPropertyChanged("Data_train");
+
+            }
+            get
+            {
+                return data_train;
+            }
+        }
+
+        public List<List<float>> Data_test
+        {
+            set
+            {
+                data_test = value;
+                NotifyPropertyChanged("Data_test");
+
+            }
+            get
+            {
+                return data_test;
+            }
+        }
         public float Airspeed
         {
             set
@@ -213,7 +260,7 @@ namespace myFirstProject
         }
 
 
-        public void readcsvfile(string path)
+        public void readcsvtrainfile(string path)
         {
             using (StreamReader sr = new StreamReader(path))
             {
@@ -221,33 +268,57 @@ namespace myFirstProject
                 // currentLine will be null when the StreamReader reaches the end of file
                 while ((currentLine = sr.ReadLine()) != null)
                 {
-                    mylist.AddLast(currentLine);
+                    mylist_train.AddLast(currentLine);
                     currentLine = sr.ReadLine();
 
                 }
-                NumRows = mylist.Count - 2;
-                rows = NumRows - 1;
-
+                //NumRows = mylist_train.Count - 2;
+                //rows = NumRows - 1;
             }
-        }
-        public void createMap()
+            parser();
+            Data_train = createMap(mylist_train);
+            
+        
+        // Data_train=
+    }
+        public void readcsvtestfile(string path)
         {
-            myData = new List<List<float>>();
+            using (StreamReader sr = new StreamReader(path))
+            {
+                string currentLine;
+                currentLine= sr.ReadLine();
+                // currentLine will be null when the StreamReader reaches the end of file
+                while ((currentLine = sr.ReadLine()) != null)
+                {
+                    mylist_test.AddLast(currentLine);
+                    currentLine = sr.ReadLine();
+
+                }
+                NumRows = mylist_test.Count - 2;
+                //rows = NumRows - 1;
+            }
+            Data_test = createMap(mylist_test);
+        }
+        public List<List<float>> createMap(LinkedList<string> temp_list)
+        {
+            List<List<float>> temp= new List<List<float>>();
+           // myData = new List<List<float>>();
             for (int k = 0; k < cols; k++)
             {
                 List<float> l = new List<float>();
-                myData.Add(l);
+                temp.Add(l);
+               // myData.Add(l);
             }
             string line;
             string[] words;
             float num;
             int j;
-            for (int i = 0; i < mylist.Count; i++)
+            for (int i = 0; i < temp_list.Count; i++)
             {
-                line = mylist.ElementAt(i);
+                line = temp_list.ElementAt(i);
                 words = line.Split(',');
                 j = 0;
-                foreach (List<float> e in myData)
+                foreach (List<float> e in temp)
                 {
                     string n = words[j++];
                     num = float.Parse(n);
@@ -255,6 +326,7 @@ namespace myFirstProject
                 }
 
             }
+            return temp;
 
         }
 
@@ -273,14 +345,27 @@ namespace myFirstProject
                 j++;
             }
             cols = j;
+        }
 
+
+        public List<float> get_col_train(string col)
+        {
+            int index =  myfeatures.FindIndex(a => a.Contains(col));
+            List<float> list = data_train.ElementAt(index);
+            return list;
+        }
+        public List<float> get_col_test(string col)
+        {
+            int index = myfeatures.FindIndex(a => a.Contains(col));
+            List<float> list = data_test.ElementAt(index);
+            return list;
         }
 
         public float findElement(string feature)
         {
             // int index = myMap[feature];
             int index = myfeatures.FindIndex(a => a.Contains(feature));
-            List<float> list = myData.ElementAt(index);
+            List<float> list = data_train.ElementAt(index);
             return list.ElementAt(IndexRow);
         }
 
@@ -310,7 +395,7 @@ namespace myFirstProject
                     {
                         IndexRow++;
                     }
-                    string line = mylist.ElementAt(IndexRow);
+                    string line = mylist_test.ElementAt(IndexRow);
                     client.write(line);
                     updateData(line);
                     Thread.Sleep(speedsend);
@@ -338,14 +423,26 @@ namespace myFirstProject
             Pitch = findElement("pitch-deg");
             Yaw = findElement("side-slip-deg");
             Direction = findElement("heading-deg");
-
             setMainGraphList(MainGraphName);
-            //setSecondGraphList(SecondGraphName);
-
             setLineReg();
             setTime();
+            //////////////////
+            if (dynamic_load != null)
+            {
+
+                dynamic_load.time(indexRow);
+
+                //new Thread(delegate ()
+                //{
+                //    dynamic_load.time(indexRow);
+                //});
+            }
+            ///////////////////////
+
         }
 
+
+        
         public void changeSpeed(double speed)
         {
             speedsend = (int)(50 / speed);
@@ -413,8 +510,11 @@ namespace myFirstProject
             set
             {
                 mainGraphName = value;
-                
+
+                secondGraphName = get_element(mainGraphName);
+
                 NotifyPropertyChanged("MainGraphName");
+
             }
             get
             {
@@ -482,7 +582,7 @@ namespace myFirstProject
 
             MainGraphList = setGraphList(MainGraphName);
 
-            SecondGraphName = get_element(column);
+            //SecondGraphName = get_element(column);
 
             SecondGraphList = setGraphList(SecondGraphName); 
 
@@ -495,7 +595,7 @@ namespace myFirstProject
         public List<DataPoint> setGraphList(string column)
         {
             int index = myfeatures.FindIndex(a => a.Contains(column));
-            List<float> cornentColumn = myData[index];
+            List<float> cornentColumn = data_test[index];
             List<DataPoint> newDataPoints = new List<DataPoint>();
             int i = 0;
             foreach (float num in cornentColumn)
@@ -510,29 +610,32 @@ namespace myFirstProject
             }
             return newDataPoints;
         }
-
+     
 
         public void setLineReg()
         {
             
             int index = myfeatures.FindIndex(a => a.Contains(MainGraphName));
-            List<float> X = myData[index];
-            float[] one_X =X.ToArray();
-
-             index = myfeatures.FindIndex(a => a.Contains(SecondGraphName));
-            List<float> Y= myData[index];
-            float[] tow_Y =Y.ToArray();
+            List<float> x_train = data_train[index];
+            List<float> x_test = data_test[index];
+            float[] one_X =x_train.ToArray();
+        ;
+            index = myfeatures.FindIndex(a => a.Contains(SecondGraphName));
+            List<float> Y_train= data_train[index];
+            List<float> y_test = data_test[index];
+            float[] tow_Y =Y_train.ToArray();
+        
 
             Point[] ps = new Point[one_X.Length];
             List<DataPoint>temp_points= new List<DataPoint>();
 
 
-            for (int i = 0; i < X.Count; ++i)
+            for (int i = 0; i < x_train.Count; ++i)
             {
                 ps[i] = new Point(one_X[i], tow_Y[i]);
                 if (i > (indexRow - 300) && i <= indexRow) 
                 {
-                    temp_points.Add(new DataPoint(one_X[i], tow_Y[i]));
+                    temp_points.Add(new DataPoint(x_test.ElementAt(i), y_test.ElementAt(i)));
                 }
             }
            // Points = ps;
@@ -540,16 +643,15 @@ namespace myFirstProject
 
             List<DataPoint> cor_point = new List<DataPoint>();
 
-            for (int i = 0; i < X.Count; ++i)
+            for (int i = 0; i < x_test.Count; ++i)
             {
-                cor_point.Add(new DataPoint(l.X_line(Y[i]), Y[i]));
-                cor_point.Add(new DataPoint(X[i], l.f(X[i])));
+                cor_point.Add(new DataPoint(l.X_line(y_test.ElementAt(i)), y_test.ElementAt(i)));
+                cor_point.Add(new DataPoint(x_test.ElementAt(i), l.f(x_test.ElementAt(i))));
             }
 
 
-         //   cor_point.Add(new DataPoint(-100, l.f(2)));
-          //  cor_point.Add(new DataPoint(300,l.f(4)));
-            
+            //   cor_point.Add(new DataPoint(-100, l.f(2)));
+            //  cor_point.Add(new DataPoint(300,l.f(4)));
             LineReg = cor_point;
             Points_reg = temp_points;
         }
@@ -627,7 +729,7 @@ namespace myFirstProject
         }
         ***/
 
-
+       
 
         public void pearson()
         {
@@ -637,7 +739,7 @@ namespace myFirstProject
             for (i = 0; i < myfeatures.Count; i++)
             {
 
-                List<float> feathre_one = myData.ElementAt(i);
+                List<float> feathre_one = data_train.ElementAt(i);
                 float max = 0;
                 int index = 0;
                 for (int j = 0; j < myfeatures.Count; j++)
@@ -645,9 +747,10 @@ namespace myFirstProject
                     if (i != j)
                     {
                         float num = 0;
-                        List<float> feathre_tow = myData.ElementAt(j);
+                        List<float> feathre_tow = data_train.ElementAt(j);
                         float[] arr_one = feathre_one.ToArray();
                         float[] arr_tow = feathre_tow.ToArray();
+                       
                         num = Math.Abs(anomaly.pearson(arr_one, arr_tow, arr_one.Length));
                         if (num > max)
                         {
@@ -660,6 +763,8 @@ namespace myFirstProject
               
             }
         }
+
+      
 
     }
 

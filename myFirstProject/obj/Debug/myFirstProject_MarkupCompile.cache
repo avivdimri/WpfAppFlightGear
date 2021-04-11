@@ -4,17 +4,17 @@
 winexe
 C#
 .cs
-C:\Users\Yehudit\source\repos\git\WpfAppFlightGear\myFirstProject\obj\Debug\
+C:\Users\yosef\Source\Repos\WpfAppFlightGear\myFirstProject\obj\Debug\
 myFirstProject
 none
 false
 DEBUG;TRACE
-C:\Users\Yehudit\source\repos\git\WpfAppFlightGear\myFirstProject\App.xaml
+C:\Users\yosef\Source\Repos\WpfAppFlightGear\myFirstProject\App.xaml
 6-1280156591
 
 21-1909719652
-18-964828127
+18-1333519880
 Controler.xaml;deshboard.xaml;GraphControl.xaml;JoystickControler.xaml;MainWindow.xaml;SliderControl.xaml;
 
-False
+True
 

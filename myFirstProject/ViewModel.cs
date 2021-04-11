@@ -35,11 +35,18 @@ namespace myFirstProject
             //model.parser(path);
            // model.createMap();
         }
-        public void Loadfile(string path)
+        public void Loadtrainfile(string path)
         {
-            model.readcsvfile(path);
-            model.parser();
-            model.createMap();
+            model.readcsvtrainfile(path);
+           // model.parser();
+           // model.Data_train = model.createMap();
+        }
+
+        public void Loadtestfile(string path)
+        {
+            model.readcsvtestfile(path);
+           // model.parser();
+           // model.Data_test= model.createMap();
         }
         public void Start()
         {

@@ -8,6 +8,8 @@
              mc:Ignorable="d" 
              d:DesignHeight="450" Width="524">
     <Canvas HorizontalAlignment="Left" Height="500" VerticalAlignment="Top" Width="500">
+        
+        
         <Grid Height="444" >
 
             <Grid.ColumnDefinitions>
@@ -23,6 +25,9 @@
 
 
             </Grid.RowDefinitions>
+
+
+            
 
 
 
@@ -59,8 +64,10 @@
                         <oxy:LineSeries  ItemsSource="{Binding VM_LineReg, Mode=OneWay}" Color="DarkBlue" />
                     </oxy:Plot.Series>
                 </oxy:Plot>
-            </Canvas>
 
+                <DockPanel x:Name="mydock" Background="Brown"  HorizontalAlignment="Left" Height="238" LastChildFill="False" VerticalAlignment="Top" Width="336" Margin="265,50,0,0" Grid.ColumnSpan="2"/>
+
+            </Canvas>
 
         </Grid>
     </Canvas>

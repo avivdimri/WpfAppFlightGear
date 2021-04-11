@@ -58,7 +58,7 @@ namespace myFirstProject
 			if (openFile.ShowDialog() == true)
 			{
 				path = openFile.FileName;
-				vm.Loadfile(path);
+				vm.Loadtrainfile(path);
 			}
 			
 		}
@@ -97,6 +97,31 @@ namespace myFirstProject
 
         private void graphCont_Loaded(object sender, RoutedEventArgs e)
         {
+
+        }
+
+        private void MenuItem_Click(object sender, RoutedEventArgs e)
+        {
+			OpenFileDialog openFile = new OpenFileDialog();
+			openFile.Filter = "CSV files (*.csv)|*.csv";
+			if (openFile.ShowDialog() == true)
+			{
+				path = openFile.FileName;
+				vm.Loadtestfile(path);
+			}
+
+		}
+
+        private void MenuItem_Click_1(object sender, RoutedEventArgs e)
+        {
+			OpenFileDialog openFile = new OpenFileDialog();
+			openFile.Filter = "dll files (*.dll)|*.dll";
+			if (openFile.ShowDialog() == true)
+			{
+				path = openFile.FileName;
+				
+			}
+			graphCont.Path = path;
 
         }
     }

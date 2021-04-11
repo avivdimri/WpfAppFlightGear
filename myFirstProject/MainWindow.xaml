@@ -14,8 +14,10 @@
     <Canvas Margin="0,0,196.4,-1.4" Height="523" VerticalAlignment="Top">
         <Menu Canvas.Top="0" Canvas.Left="0">
             <MenuItem Header="_File" FontSize="24" Width="186">
-                <MenuItem Header="_Upload Csv File" Click="Open_Click" />
+                <MenuItem Header="_Upload train Csv File" Click="Open_Click" />
+                <MenuItem Header="_Upload test Csv File" Click="MenuItem_Click" />
                 <MenuItem Header="_Upload Xml File" Click="upload_Click" />
+                <MenuItem Header="load dll file" Click="MenuItem_Click_1"  />
                 <Separator />
                 <MenuItem Header="_Exit" />
             </MenuItem>
