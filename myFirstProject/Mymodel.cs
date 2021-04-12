@@ -28,8 +28,8 @@ namespace myFirstProject
         private bool pausePressed;
         private int indexRow = 0;
         private int numRows = 1;
-        private float aileron;
-        private float elevator;
+        private float aileron=125;
+        private float elevator=125;
         private float rudder;
         private float throttle;
         private float altimeter;
@@ -265,11 +265,12 @@ namespace myFirstProject
             using (StreamReader sr = new StreamReader(path))
             {
                 string currentLine;
+                currentLine = sr.ReadLine();
                 // currentLine will be null when the StreamReader reaches the end of file
                 while ((currentLine = sr.ReadLine()) != null)
                 {
                     mylist_train.AddLast(currentLine);
-                    currentLine = sr.ReadLine();
+                    //currentLine = sr.ReadLine();
 
                 }
                 //NumRows = mylist_train.Count - 2;
@@ -291,7 +292,7 @@ namespace myFirstProject
                 while ((currentLine = sr.ReadLine()) != null)
                 {
                     mylist_test.AddLast(currentLine);
-                    currentLine = sr.ReadLine();
+                    //currentLine = sr.ReadLine();
 
                 }
                 NumRows = mylist_test.Count - 2;

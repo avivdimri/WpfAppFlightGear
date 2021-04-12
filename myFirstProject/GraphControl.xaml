@@ -8,8 +8,8 @@
              mc:Ignorable="d" 
              d:DesignHeight="450" Width="524">
     <Canvas HorizontalAlignment="Left" Height="500" VerticalAlignment="Top" Width="500">
-        
-        
+
+
         <Grid Height="444" >
 
             <Grid.ColumnDefinitions>
@@ -27,14 +27,14 @@
             </Grid.RowDefinitions>
 
 
-            
 
 
 
 
 
 
-            <ScrollViewer HorizontalAlignment="Left" Height="400" VerticalAlignment="Top" Width="240" VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Auto" OpacityMask="#FFE43A3A" Foreground="#FF1FB647" BorderBrush="#FF302EBF" FontSize="11" >
+
+            <ScrollViewer HorizontalAlignment="Left" Height="176" VerticalAlignment="Top" Width="240" VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Auto" OpacityMask="#FFE43A3A" Foreground="#FF1FB647" BorderBrush="#FF302EBF" FontSize="11" >
                 <StackPanel x:Name="myStack" Height="auto" Width="240"  OpacityMask="#FF277144">
                     <Button Content="show Graphs:" Click="showGraphs" Height="40" FontWeight="Bold" FontSize="16"  />
 
@@ -65,7 +65,7 @@
                     </oxy:Plot.Series>
                 </oxy:Plot>
 
-                <DockPanel x:Name="mydock" Background="Brown"  HorizontalAlignment="Left" Height="238" LastChildFill="False" VerticalAlignment="Top" Width="336" Margin="265,50,0,0" Grid.ColumnSpan="2"/>
+                <DockPanel x:Name="mydock" Background="Brown"  HorizontalAlignment="Left" Height="191" LastChildFill="False" VerticalAlignment="Top" Width="233" Grid.ColumnSpan="2" Canvas.Left="-237" Canvas.Top="212"/>
 
             </Canvas>
 
