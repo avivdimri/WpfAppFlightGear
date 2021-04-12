@@ -37,14 +37,14 @@ namespace myFirstProject
         }
         public void Loadtrainfile(string path)
         {
-            model.readcsvtrainfile(path);
+            model.readCsvTrainFile(path);
            // model.parser();
            // model.Data_train = model.createMap();
         }
 
         public void Loadtestfile(string path)
         {
-            model.readcsvtestfile(path);
+            model.readCsvTestFile(path);
            // model.parser();
            // model.Data_test= model.createMap();
         }

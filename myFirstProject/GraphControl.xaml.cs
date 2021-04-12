@@ -137,7 +137,6 @@ namespace myFirstProject
             catch (Exception e)
             {
                 Console.WriteLine(e.Message);
-
             }
             vm.VM_Dynamic_load = dynamic_load;
 

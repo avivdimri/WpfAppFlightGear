@@ -60,11 +60,10 @@ namespace myFirstProject
         }
 
 
-        public void VM_setMainGraphList(string column)
-        {
-            model.setMainGraphList(column);
-        }
-
+        //public void VM_setMainGraphList(string column)
+        //{
+        //    model.setMainGraphList(column);
+        //}
 
 
         public List<DataPoint> VM_MainGraphList

@@ -122,7 +122,6 @@ namespace myFirstProject
 				
 			}
 			graphCont.Path = path;
-
         }
     }
 }
