@@ -13,34 +13,20 @@ namespace myFirstProject
 {
     public class MyModel : InterfaceModel
     {
-        Dictionary<string, int> myMap = new Dictionary<string, int>();
         List<string> myfeatures = new List<string>();
         private animaly_detection anomaly = new animaly_detection();
-        List<List<float>> data_train;
-        List<List<float>> data_test;
+
         private int cols;
         //private int rows;
         private LinkedList<string> mylist_train = new LinkedList<string>();
         private LinkedList<string> mylist_test = new LinkedList<string>();
         private InterfaceClient client;
-        private int speedsend = 50;
-        private bool stop;
-        private bool pausePressed;
-        private int indexRow = 0;
-        private int numRows = 1;
-        private float aileron=125;
-        private float elevator=125;
-        private float rudder;
-        private float throttle;
-        private float altimeter;
-        private float airspeed;
-        private float roll;
-        private float direction;
-        private float pitch;
-        private float yaw;
-        private string time = "00:00:00";
-        private dynamic dynamic_load=null;
 
+        private bool stop = false;
+        private bool pausePressed = false;
+
+        //propert of the dynamic of the dll
+        private dynamic dynamic_load = null;
         public dynamic Dynamic_load
         {
             get
@@ -54,17 +40,14 @@ namespace myFirstProject
             }
         }
 
-        //public List<List<float>> getmydata()
-        //{
-        //    return data_train;
-        //}
+        //propert of the Data train file
+        List<List<float>> data_train;
         public List<List<float>> Data_train
         {
             set
             {
                 data_train = value;
                 NotifyPropertyChanged("Data_train");
-
             }
             get
             {
@@ -72,6 +55,8 @@ namespace myFirstProject
             }
         }
 
+        //propert of the Data test file
+        List<List<float>> data_test;
         public List<List<float>> Data_test
         {
             set
@@ -85,6 +70,9 @@ namespace myFirstProject
                 return data_test;
             }
         }
+
+        //property of the Airspeed
+        private float airspeed;
         public float Airspeed
         {
             set
@@ -97,6 +85,9 @@ namespace myFirstProject
                 return airspeed;
             }
         }
+
+        //propert of the Roll
+        private float roll;
         public float Roll
         {
             set
@@ -109,6 +100,9 @@ namespace myFirstProject
                 return roll;
             }
         }
+
+        //property of the Direction
+        private float direction;
         public float Direction
         {
             set
@@ -121,6 +115,9 @@ namespace myFirstProject
                 return direction;
             }
         }
+
+        //property of the Pitch
+        private float pitch;
         public float Pitch
         {
             set
@@ -134,6 +131,9 @@ namespace myFirstProject
 
             }
         }
+
+        //property of the Yaw
+        private float yaw;
         public float Yaw
         {
             set
@@ -147,6 +147,9 @@ namespace myFirstProject
                 return yaw;
             }
         }
+
+        //property of the Altimeter
+        private float altimeter;
         public float Altimeter
         {
             get { return altimeter; }
@@ -157,6 +160,8 @@ namespace myFirstProject
             }
         }
 
+        //property of the number of rows
+        private int numRows = 1;
         public int NumRows
         {
             get
@@ -170,6 +175,9 @@ namespace myFirstProject
             }
 
         }
+
+        //property of the speed of the screening
+        private int speedsend = 50;
         public int Speedsend
         {
             set
@@ -178,6 +186,8 @@ namespace myFirstProject
             { return speedsend; }
         }
 
+        // property of the number of the row which now on the screen
+        private int indexRow = 0;
         public int IndexRow
         {
             get { return indexRow; }
@@ -187,6 +197,9 @@ namespace myFirstProject
                 NotifyPropertyChanged("IndexRow");
             }
         }
+
+        //property of the Aileron 
+        private float aileron = 125;
         public float Aileron
         {
             get { return aileron; }
@@ -196,6 +209,9 @@ namespace myFirstProject
                 NotifyPropertyChanged("Aileron");
             }
         }
+
+        //property of the Elevator
+        private float elevator = 125;
         public float Elevator
         {
             get { return elevator; }
@@ -206,6 +222,9 @@ namespace myFirstProject
             }
 
         }
+
+        //property of the Rudder
+        private float rudder;
         public float Rudder
         {
             get
@@ -219,6 +238,9 @@ namespace myFirstProject
             }
 
         }
+
+        //property of the throttle
+        private float throttle;
         public float Throttle
         {
             get
@@ -232,6 +254,9 @@ namespace myFirstProject
             }
 
         }
+
+        //property of the Time on the slider
+        private string time = "00:00:00";
         public string Time
         {
             get
@@ -246,21 +271,39 @@ namespace myFirstProject
 
         }
 
-
+        // The constructor gets client which responsible on the connection with the FG.
         public MyModel(InterfaceClient the_client)
         {
             client = the_client;
-            stop = false;
-            pausePressed = false;
         }
+
+        // The function go over of all her observers and send them the notificaton.
         public void NotifyPropertyChanged(string propName)
         {
             if (this.PropertyChanged != null)
                 this.PropertyChanged(this, new PropertyChangedEventArgs(propName));
         }
 
+        // The function gets path to csv file of train flight,  parse and save the data of it.
+        public void readCsvTrainFile(string path)
+        {
+            using (StreamReader sr = new StreamReader(path))
+            {
+                string currentLine;
+                currentLine = sr.ReadLine();
+                // currentLine will be null when the StreamReader reaches the end of file.
+                while ((currentLine = sr.ReadLine()) != null)
+                {
+                    mylist_train.AddLast(currentLine);
+                }
+            }
+            ParseXml();
+            Data_train = createMap(mylist_train);
 
-        public void readcsvtrainfile(string path)
+        }
+
+        // The function gets path to csv file of test flight, parser and save the data of it.
+        public void readCsvTestFile(string path)
         {
             using (StreamReader sr = new StreamReader(path))
             {
@@ -269,57 +312,38 @@ namespace myFirstProject
                 // currentLine will be null when the StreamReader reaches the end of file
                 while ((currentLine = sr.ReadLine()) != null)
                 {
-                    mylist_train.AddLast(currentLine);
-                    //currentLine = sr.ReadLine();
-
-                }
-                //NumRows = mylist_train.Count - 2;
-                //rows = NumRows - 1;
-            }
-            parser();
-            Data_train = createMap(mylist_train);
-            
-        
-        // Data_train=
-    }
-        public void readcsvtestfile(string path)
-        {
-            using (StreamReader sr = new StreamReader(path))
-            {
-                string currentLine;
-                currentLine= sr.ReadLine();
-                // currentLine will be null when the StreamReader reaches the end of file
-                while ((currentLine = sr.ReadLine()) != null)
-                {
                     mylist_test.AddLast(currentLine);
-                    //currentLine = sr.ReadLine();
-
                 }
                 NumRows = mylist_test.Count - 2;
-                //rows = NumRows - 1;
             }
             Data_test = createMap(mylist_test);
         }
-        public List<List<float>> createMap(LinkedList<string> temp_list)
+
+        // The function gets list which contain data of the rows. The function divides
+        // the rows to cols by the features and enter to  data structure(list of list) which she build.
+        public List<List<float>> createMap(LinkedList<string> data_by_rows)
         {
-            List<List<float>> temp= new List<List<float>>();
-           // myData = new List<List<float>>();
-            for (int k = 0; k < cols; k++)
+            List<List<float>> Data = new List<List<float>>();
+            int size = myfeatures.Count;
+            // build the data structure which wil contain the the data int the list the function gets 
+            for (int k = 0; k < size; k++)
             {
                 List<float> l = new List<float>();
-                temp.Add(l);
-               // myData.Add(l);
+                Data.Add(l);
             }
             string line;
             string[] words;
             float num;
             int j;
-            for (int i = 0; i < temp_list.Count; i++)
+            size = data_by_rows.Count;
+            // go over all the rows of the 
+            for (int i = 0; i < size; i++)
             {
-                line = temp_list.ElementAt(i);
+                line = data_by_rows.ElementAt(i); //the row number i
                 words = line.Split(',');
                 j = 0;
-                foreach (List<float> e in temp)
+                // parse the row line and enter to the data structue 
+                foreach (List<float> e in Data)
                 {
                     string n = words[j++];
                     num = float.Parse(n);
@@ -327,57 +351,59 @@ namespace myFirstProject
                 }
 
             }
-            return temp;
+            return Data;
 
         }
 
-        public void parser()
+        //The function gets path of XML file and gets from it the list of the flight features.
+        public void ParseXml()
         {
-            int i, j = 0;
+            int i;
             XmlDocument xdoc = new XmlDocument();
             xdoc.Load("C:/Program Files/FlightGear 2020.3.6/data/Protocol/playback_small.xml");
             XmlNodeList name = xdoc.GetElementsByTagName("name");
-            for (i = 0; i < name.Count / 2; i++)
+            int size = name.Count / 2; // read only the first part(the input) in the XML file
+            for (i = 0; i < size; i++)
             {
-
                 string a = name[i].InnerText;
                 myfeatures.Add(a);
-                myMap[a] = i;
-                j++;
             }
-            cols = j;
+            cols = i;
         }
 
-
-        public List<float> get_col_train(string col)
+        // The function gets feature and return the col of the feature in the train file
+        public List<float> get_col_train(string feature)
         {
-            int index =  myfeatures.FindIndex(a => a.Contains(col));
+            int index = myfeatures.FindIndex(a => a.Contains(feature)); // the index number of the feature 
             List<float> list = data_train.ElementAt(index);
             return list;
         }
-        public List<float> get_col_test(string col)
+
+        // The function gets feature and return the col of the feature in the test file
+        public List<float> get_col_test(string feature)
         {
-            int index = myfeatures.FindIndex(a => a.Contains(col));
+            int index = myfeatures.FindIndex(a => a.Contains(feature)); // the index number of the feature 
             List<float> list = data_test.ElementAt(index);
             return list;
         }
 
+        // The function gets feature and return the value of this feature in the current row which is reading now 
         public float findElement(string feature)
         {
-            // int index = myMap[feature];
-            int index = myfeatures.FindIndex(a => a.Contains(feature));
+            int index = myfeatures.FindIndex(a => a.Contains(feature)); // the index number of the feature 
             List<float> list = data_train.ElementAt(index);
             return list.ElementAt(IndexRow);
         }
 
         public event PropertyChangedEventHandler PropertyChanged;
 
+        // The function gets ip and port and creates onnection with the FG
         public void Connect(string ip, int port)
         {
             client.connect(ip, port);
-
         }
 
+        // The function diconnect
         public void disConnect()
         {
             client.disconnect();
@@ -443,7 +469,7 @@ namespace myFirstProject
         }
 
 
-        
+
         public void changeSpeed(double speed)
         {
             speedsend = (int)(50 / speed);
@@ -485,7 +511,7 @@ namespace myFirstProject
 
         // map of the corelations of all features
         private List<KeyValuePair<string, string>> corelationMap;
-        
+
 
 
         private List<DataPoint> mainGraphList;
@@ -534,7 +560,7 @@ namespace myFirstProject
             set
             {
                 secondGraphList = value;
-                
+
                 NotifyPropertyChanged("SecondGraphList");
             }
             get
@@ -585,11 +611,11 @@ namespace myFirstProject
 
             //SecondGraphName = get_element(column);
 
-            SecondGraphList = setGraphList(SecondGraphName); 
+            SecondGraphList = setGraphList(SecondGraphName);
 
 
             //setSecondGraphList(SecondGraphName);
-           
+
         }
 
 
@@ -611,36 +637,36 @@ namespace myFirstProject
             }
             return newDataPoints;
         }
-     
+
 
         public void setLineReg()
         {
-            
+
             int index = myfeatures.FindIndex(a => a.Contains(MainGraphName));
             List<float> x_train = data_train[index];
             List<float> x_test = data_test[index];
-            float[] one_X =x_train.ToArray();
-        ;
+            float[] one_X = x_train.ToArray();
+            ;
             index = myfeatures.FindIndex(a => a.Contains(SecondGraphName));
-            List<float> Y_train= data_train[index];
+            List<float> Y_train = data_train[index];
             List<float> y_test = data_test[index];
-            float[] tow_Y =Y_train.ToArray();
-        
+            float[] tow_Y = Y_train.ToArray();
+
 
             Point[] ps = new Point[one_X.Length];
-            List<DataPoint>temp_points= new List<DataPoint>();
+            List<DataPoint> temp_points = new List<DataPoint>();
 
 
             for (int i = 0; i < x_train.Count; ++i)
             {
                 ps[i] = new Point(one_X[i], tow_Y[i]);
-                if (i > (indexRow - 300) && i <= indexRow) 
+                if (i > (indexRow - 300) && i <= indexRow)
                 {
                     temp_points.Add(new DataPoint(x_test.ElementAt(i), y_test.ElementAt(i)));
                 }
             }
-           // Points = ps;
-            Line l =  anomaly.linear_reg(ps, ps.Length);
+            // Points = ps;
+            Line l = anomaly.linear_reg(ps, ps.Length);
 
             List<DataPoint> cor_point = new List<DataPoint>();
 
@@ -694,13 +720,13 @@ namespace myFirstProject
 
         public string get_element(string col)
         {
-            foreach(var i in corelationMap)
+            foreach (var i in corelationMap)
             {
                 if (i.Key.Equals(col))
                 {
                     return i.Value;
                 }
-                
+
             }
             return null;
         }
@@ -730,11 +756,11 @@ namespace myFirstProject
         }
         ***/
 
-       
+
 
         public void pearson()
         {
-          
+
             corelationMap = new List<KeyValuePair<string, string>>();
             int i;
             for (i = 0; i < myfeatures.Count; i++)
@@ -751,7 +777,7 @@ namespace myFirstProject
                         List<float> feathre_tow = data_train.ElementAt(j);
                         float[] arr_one = feathre_one.ToArray();
                         float[] arr_tow = feathre_tow.ToArray();
-                       
+
                         num = Math.Abs(anomaly.pearson(arr_one, arr_tow, arr_one.Length));
                         if (num > max)
                         {
@@ -760,12 +786,12 @@ namespace myFirstProject
                         }
                     }
                 }
-                corelationMap.Add(new KeyValuePair <string,string>( myfeatures.ElementAt(i), myfeatures.ElementAt(index)));
-              
+                corelationMap.Add(new KeyValuePair<string, string>(myfeatures.ElementAt(i), myfeatures.ElementAt(index)));
+
             }
         }
 
-      
+
 
     }
 
