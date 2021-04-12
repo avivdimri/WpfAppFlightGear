@@ -80,7 +80,11 @@ namespace myFirstProject
                 foreach (string i in list_col)
                 {
                     Button newB = new Button();
+                    BrushConverter converter = new BrushConverter();
+                    //Brush brush = converter.ConvertFromString("#66FFE7CB") as Brush;
+                    newB.Background = converter.ConvertFromString("#66FFE7CB") as Brush;
                     newB.Content = i;
+                    newB.FontWeight= FontWeights.Bold;
                     myStack.Children.Add(newB);
                     newB.Click += new RoutedEventHandler(Button_setMainGraphList);
                 }

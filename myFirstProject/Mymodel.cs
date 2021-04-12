@@ -215,6 +215,7 @@ namespace myFirstProject
         {
             isAfterLoad = true;
             pearson(); // make all the correlative featurses couples
+            MainGraphName = "airspeed-kt";
             new Thread(delegate ()
             {
                 while (!stop)
@@ -550,7 +551,7 @@ namespace myFirstProject
         }
 
         //property of the name of the left Graph
-        private string mainGraphName = "aileron";
+        private string mainGraphName;
         public string MainGraphName
         {
             set
@@ -582,7 +583,7 @@ namespace myFirstProject
         }
 
         //property of the name of the right Graph
-        private string secondGraphName = "rudder";
+        private string secondGraphName;
         public string SecondGraphName
         {
             set

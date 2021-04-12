@@ -11,7 +11,13 @@
        
         mc:Ignorable="d"
         Title="MainWindow" Height="600" Width="800">
-    <Canvas Margin="0,0,196.4,-1.4" Height="523" VerticalAlignment="Top">
+
+    <Window.Background>
+        <ImageBrush ImageSource="aircraft.jpg" Stretch="Fill" />
+    </Window.Background>
+    <DockPanel>
+        
+        <Canvas  Height="523" VerticalAlignment="Top">
         <Menu Canvas.Top="0" Canvas.Left="0">
             <MenuItem Header="_File" FontSize="24" Width="186">
                 <MenuItem Header="_Upload train Csv File" Click="Open_Click" />
@@ -39,9 +45,10 @@
                 </TransformGroup>
             </Joystick:JoystickControler.RenderTransform>
         </Joystick:JoystickControler>
-        <Slider:SliderControl x:Name="sliderCont"  Width="712" Height="42" Canvas.Top="528" Canvas.Left="-3"/>
         <Deshboard:deshboard x:Name="deshboardCont" Width="160" Canvas.Left="598" Height="216" Canvas.Top="34" />
         <Graphs:GraphControl x:Name="graphCont"  Width="530" Height="500" Canvas.Top="34" Loaded="graphCont_Loaded" />
-    </Canvas>
+        <Slider:SliderControl x:Name="sliderCont"  Width="712" Height="42" Canvas.Top="528" Canvas.Left="-3"/>
 
+    </Canvas>
+    </DockPanel>
 </Window>

@@ -173,5 +173,11 @@
   <ItemGroup>
     <Folder Include="VMmodel\" />
   </ItemGroup>
+  <ItemGroup>
+    <Resource Include="aircraft.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Runway-Plane.jpg" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

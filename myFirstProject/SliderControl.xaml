@@ -9,47 +9,47 @@
 
         <StackPanel x:Name="stack" Grid.Row="2" Grid.Column="2" Orientation="Horizontal" Canvas.Left="10" Height="40">
 
-            <Button Content="⏪" Height="30" Width="30" FontSize="20" Background="#FFC32A2A" Click="goBack_Click"/>
+            <Button Content="⏪" Height="30" Width="30" FontSize="20" Background="#FF100F0F" Foreground="#FFE5DDDD" Click="goBack_Click" />
 
-            <Button x:Name ="playButton" Content="▶️" Height="30" Width="30" FontSize="20" Background="#FFC32A2A" Click="play"/>
+            <Button x:Name ="playButton" Content="▶️" Height="30" Width="30" FontSize="20" Background="#FF100F0F" Foreground="#FFE5DDDD" Click="play"/>
 
-            <Button x:Name="pauseButton" Content="⏸" Height="30" Width="30" FontSize="20" Background="#FFC32A2A" Click="pause"/>
+            <Button x:Name="pauseButton" Content="⏸" Height="30" Width="30" FontSize="20" Background="#FF100F0F" Foreground="#FFE5DDDD" Click="pause"/>
 
-            <Button Content="⏩" Height="30" Width="30" FontSize="20" Background="#FFC32A2A" Click="goHead"/>
+            <Button Content="⏩" Height="30" Width="30" FontSize="20" Background="#FF100F0F" Foreground="#FFE5DDDD" Click="goHead"/>
 
-            <DockPanel VerticalAlignment="Center" Margin="10">
+            <DockPanel VerticalAlignment="Center" Margin="10" Background="Transparent">
                
-                <Slider x:Name="slider" Grid.ColumnSpan="2" Value="{Binding VM_IndexRow}" Maximum="{Binding VM_NumRows}" Minimum="0" TickPlacement="BottomRight" TickFrequency="10" Height="30" Width="420" Background="#FFC32A2A" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"/>
+                <Slider x:Name="slider" Grid.ColumnSpan="2" Background="Transparent" Value="{Binding VM_IndexRow}" Maximum="{Binding VM_NumRows}" Minimum="0" TickPlacement="BottomRight" TickFrequency="10" Height="30" Width="420" BorderBrush="Aqua"   HorizontalAlignment="Stretch" VerticalAlignment="Stretch"/>
             </DockPanel>
 
-            <Menu DockPanel.Dock="Bottom"  Height="30" Width="auto" Background="#FFC32A2A" FontSize="18" FontWeight="Bold" FontFamily="Aharoni">
+            <Menu DockPanel.Dock="Bottom"  Height="30" Width="auto" Background="#FF100F0F" Foreground="#FFE5DDDD" FontSize="18" FontWeight="Bold" FontFamily="Aharoni">
 
-                <MenuItem x:Name="speed" Header="speed" Height="30" Width="70">
+                <MenuItem x:Name="speed" Header="speed" Height="30" Width="70" Background="#FF100F0F" Foreground="#FFE5DDDD">
 
-                    <MenuItem Header="0.5" Click="Speed_Click_05" />
+                    <MenuItem Header="0.5" Click="Speed_Click_05" Background="#FF100F0F" Foreground="#FFE5DDDD"/>
 
-                    <MenuItem Header="0.75" Click="Speed_Click_075" />
+                    <MenuItem Header="0.75" Click="Speed_Click_075" Background="#FF100F0F" Foreground="#FFE5DDDD"/>
 
-                    <MenuItem Header="1" Click="Speed_Click_1"/>
+                    <MenuItem Header="1" Click="Speed_Click_1" Background="#FF100F0F" Foreground="#FFE5DDDD"/>
 
-                    <MenuItem Header="1.25" Click="Speed_Click_125"/>
+                    <MenuItem Header="1.25" Click="Speed_Click_125" Background="#FF100F0F" Foreground="#FFE5DDDD"/>
 
-                    <MenuItem Header="1.5" Click="Speed_Click_15"/>
+                    <MenuItem Header="1.5" Click="Speed_Click_15" Background="#FF100F0F" Foreground="#FFE5DDDD"/>
 
-                    <MenuItem Header="1.75" Click="Speed_Click_175"/>
+                    <MenuItem Header="1.75" Click="Speed_Click_175" Background="#FF100F0F" Foreground="#FFE5DDDD"/>
 
-                    <MenuItem Header="2" Click="Speed_Click_2" Margin="0,0,0.2,0"/>
+                    <MenuItem Header="2" Click="Speed_Click_2" Margin="0,0,0.2,0" Background="#FF100F0F" Foreground="#FFE5DDDD"/>
 
-                    <MenuItem Header="2.25" Click="Speed_Click_225"/>
+                    <MenuItem Header="2.25" Click="Speed_Click_225" Background="#FF100F0F" Foreground="#FFE5DDDD"/>
 
-                    <MenuItem Header="2.5" Click="Speed_Click_25"/>
+                    <MenuItem Header="2.5" Click="Speed_Click_25" Background="#FF100F0F" Foreground="#FFE5DDDD"/>
 
                 </MenuItem>
 
             </Menu>
 
-            <TextBlock x:Name="Mspeed" Text="1" TextWrapping="Wrap"  Height="30" Width="40" DockPanel.Dock="Bottom"  Background="#FFC32A2A" FontWeight="Bold" FontSize="18" HorizontalAlignment="Center" VerticalAlignment="Center" TextAlignment="Center"/>
-            <TextBlock x:Name="Time" Text="{Binding VM_Time,Mode=OneWay}" TextWrapping="Wrap"  Height="30" Width="106" DockPanel.Dock="Bottom"  Background="#FFC32A2A" FontWeight="Bold" FontSize="18" HorizontalAlignment="Center" VerticalAlignment="Center" TextAlignment="Center" Margin="0,5"/>
+            <TextBlock x:Name="Mspeed" Text="1" TextWrapping="Wrap"  Height="30" Width="40" DockPanel.Dock="Bottom"  Background="#FF100F0F" Foreground="#FFE5DDDD" FontWeight="Bold" FontSize="18" HorizontalAlignment="Center" VerticalAlignment="Center" TextAlignment="Center"/>
+            <TextBlock x:Name="Time" Text="{Binding VM_Time,Mode=OneWay}" TextWrapping="Wrap"  Height="30" Width="106" DockPanel.Dock="Bottom"  Background="#FF100F0F" Foreground="#FFE5DDDD" FontWeight="Bold" FontSize="18" HorizontalAlignment="Center" VerticalAlignment="Center" TextAlignment="Center" Margin="0,5"/>
 
 
         </StackPanel>
