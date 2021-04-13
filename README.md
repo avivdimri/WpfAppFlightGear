@@ -34,10 +34,12 @@ A small joystic that show the movement of the plane during the flight.
 
 
 ###### Real-Time flight:
+![IMG_0067](https://user-images.githubusercontent.com/80414213/114617534-ea0f9900-9cb0-11eb-922b-f962323c928a.jpeg)
 
 During the flight, you'll receive a real-time flight data, such as Altimeter, Direction, Air Speed, Pitch, Roll, Heading and more.
 
 ### Loading DLL:
+
 If you want-you can also find a devion in the flight at real time runing:
 There is tow algoritam that get a normal flight to learn from , and then a real flight to finding a point with a devion and represented it in bold(red color).
 A. SimpleAnomalyDeteion - learning the most noraml distance between point and her line regression, and finding which points 
@@ -48,8 +50,10 @@ When you are loding Dll libary - the circle / line regression and their devion p
 you may want to go specific to this time to learn about the devion more,the dev point will represented in red color.
 
 ### Adding your own Dll:
+
 If you want you may add your own algoritam and load it at real time without compiling again - you just need to implement the interrface  by name IntrfaceDll - 
 you may find it in the plugins folder the declaration which method you need to load.
+
 
 
 
