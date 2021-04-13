@@ -6,13 +6,13 @@ General Description
 This program controls an aircraft within the "[FlightGear]" (https://www.flightgear.org/) flight simulator. The program connects to the flight simulator as a client.
 The client will send to the simulator the data that he get from the user - a csv file that repesent the flight instructions.
 
-# Collaborators
+### Collaborators
 This program was developed by four student, ori choen, ori abramnovich, aviv dimri and yosef berebi, CS students from Bar-Ilan university, Israel.
 
-# Code Design:
+### Code Design:
 FlightSimulatorApp has been programmed by the MVVM design, as we used C Sharp's data binding mechanism,and xaml.
 
-# Features
+####### Features
 Controller:
 Using a sliders, you can control the flight vessel. The slider repesent the real time in the flight,you may choose to go forward or backwards as you wish.
 you can also decide about the speed the flight projected on the screen as your want.
@@ -29,14 +29,14 @@ A small joystic that show the movement of the palne during the flight.
 Real-Time flight:
 During the flight, you'll receive real-time flight data, such as Altimeter, Direction, Air Speed, Pitch, Roll, Heading and more.
 
-# Loading DLL:
+### Loading DLL:
 if you want-you also can find a devion in the flight at real time runing:
 There is tow algoritam that get a normal flight to learn from , and than a real flight to finding a point with a devion and represented it in bold(red color).
 A. SimpleAnomalyDeteion - learning the most noraml distance between point and her line regression,and finding which points are more distant than the normal and alert it.
 B. MinCircle - get the MinCircle that contion all the normal point flight,and finding which point are inside the circle and alert it also in bold.
 When you loding Dll libary - the circle / line regression and her devion points at real time will appear in the MainWindow,
 you may want to go specific to this time to learn about the devion more,the dev point will represented in red color.
-# Adding your own Dll:
+### Adding your own Dll:
 if you want you may add your own algoritam and load it at real time without compiling again - you just need to implement the interrface  by name IntrfaceDll - 
 you may find it in the plugins folder the declaration which method you need to load.
 
