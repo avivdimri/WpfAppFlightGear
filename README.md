@@ -42,6 +42,7 @@ During the flight, you'll receive a real-time flight data, such as Altimeter, Di
 
 If you want-you can also find a devion in the flight at real time runing:
 There is tow algoritam that get a normal flight to learn from , and then a real flight to finding a point with a devion and represented it in bold(red color).
+
 A. SimpleAnomalyDeteion - learning the most noraml distance between point and her line regression, and finding which points 
 are more distant than the normal and alert it.
 
@@ -53,6 +54,40 @@ you may want to go specific to this time to learn about the devion more,the dev 
 
 If you want you may add your own algoritam and load it at real time without compiling again - you just need to implement the interrface  by name IntrfaceDll - 
 you may find it in the plugins folder the declaration which method you need to load.
+
+### Instructions for load own DLL
+1.Create a class by the name - dll.
+2.Implement the function in IntrfaceDll.
+3.There is a three function to implement - craete update and time.(you  can see the decleration in the plugins folder).
+4.drow the shepes you want to shoe in the project.
+5.load the path dll file in run time of the project.
+
+## Structure project:
+There is a few folders:
+
+1.In the main folder you have the solution project.
+
+2.In the packages folder there is the Oxplot libary - you must have it in your project!
+
+3.In myfirstproject folder there is all the files that needed.
+
+4.In the plugins folder there is the dll lib for the algoritam.
+
+
+# Installation for running the 
+1.Downloads the project by git clone form https://github.com/yosi058/WpfAppFlightGear.git.
+
+2.Make sure you have the Oxplot lib on your project (otherwise-downloads it).
+
+3.Build the app on the x64 - otherwise the dll will not working.
+
+4.Provide xml file for all the names of element in the flight data.load the xml first.
+
+5.Provide tow csv fiels - one is a normal flight and the second is a test flight to finding devion.
+
+
+## Documentation
+
 
 
 
