@@ -28,14 +28,9 @@ you may choose one of the featuers and his grafh and the most correlation featur
 In addion,the line regression line of the tow features,and the last 30 second will be repesented also.
 
 ###### Joystic:
-![IMG_0063](https://user-images.githubusercontent.com/80414213/114616766-ed565500-9caf-11eb-81b0-ddb2db7688b3.jpeg)
-
 A small joystic that show the movement of the plane during the flight.
 
-
 ###### Real-Time flight:
-![IMG_0067](https://user-images.githubusercontent.com/80414213/114617534-ea0f9900-9cb0-11eb-922b-f962323c928a.jpeg)
-
 During the flight, you'll receive a real-time flight data, such as Altimeter, Direction, Air Speed, Pitch, Roll, Heading and more.
 
 ### Loading DLL:
@@ -75,15 +70,23 @@ There is a few folders:
 
 
 # Installation for running the 
-1.Downloads the project by git clone form https://github.com/yosi058/WpfAppFlightGear.git.
+1.Open the FlightGear app (Downloads it if you d'ont hev - click here https://www.flightgear.org/).
 
-2.Make sure you have the Oxplot lib on your project (otherwise-downloads it).
+2.Config the setting and write this in the commend line in the setiing:
 
-3.Build the app on the x64 - otherwise the dll will not working.
+--generic=socket,in,10,127.0.0.1,5400,tcp,playback_small
 
-4.Provide xml file for all the names of element in the flight data.load the xml first.
+--fdm=null.
 
-5.Provide tow csv fiels - one is a normal flight and the second is a test flight to finding devion.
+3.Downloads the project by git clone form https://github.com/yosi058/WpfAppFlightGear.git.
+
+4.Make sure you have the Oxplot lib on your project (otherwise-downloads it).
+
+5.Build the app on the x64 - otherwise the dll will not working.
+
+6.Provide xml file for all the names of element in the flight data.load the xml first.
+
+7.Provide tow csv fiels - one is a normal flight and the second is a test flight to finding devion.
 
 
 ## Documentation
