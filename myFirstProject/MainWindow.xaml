@@ -31,17 +31,16 @@
 
         <Canvas  Height="630" Width="800"  Grid.Column="1" Grid.Row="1"  >
             <Menu Canvas.Top="0" Canvas.Left="0" Background="#9EF0F0F0">
-                <MenuItem Header="_File" FontSize="24" Width="120">
+                <MenuItem Header="_File" FontSize="24" Width="120" >
+                    <MenuItem Header="_Upload Xml File" Click="upload_Click" />
                     <MenuItem Header="_Upload train Csv File" Click="Open_Click" />
                     <MenuItem Header="_Upload test Csv File" Click="MenuItem_Click" />
-                    <MenuItem Header="_Upload Xml File" Click="upload_Click" />
-                    <MenuItem Header="load dll file" Click="MenuItem_Click_1"  />
+                    <MenuItem Header="Load dll file" Click="MenuItem_Click_1"  />
                     <Separator />
-                    <MenuItem Header="_Exit" />
+                    <MenuItem Header="_Exit" Click="exit_Click" />
                 </MenuItem>
                 <MenuItem Header="_Action" FontSize="24" Width="120">
                     <MenuItem Header="_Start" Click="Start_Click" />
-                    <MenuItem Header="_Pause" Click="Pause_Click" />
                     <Separator />
                 </MenuItem>
             </Menu>

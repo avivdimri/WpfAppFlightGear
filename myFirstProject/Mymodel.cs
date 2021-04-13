@@ -21,6 +21,18 @@ namespace myFirstProject
         private InterfaceClient client;
 
         private bool stop = false;
+        public bool Stop
+        {
+            get
+            {
+                return stop;
+            }
+            set
+            {
+                stop = value;
+            }
+        }
+
         private bool pausePressed = false;
 
         //propert of the dynamic of the dll

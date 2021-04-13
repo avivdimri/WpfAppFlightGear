@@ -55,7 +55,7 @@
                 </oxy:Plot>
 
 
-               
+
 
 
 
@@ -68,6 +68,8 @@
                 </oxy:Plot>
 
                 <DockPanel x:Name="mydock" Background="Transparent"  HorizontalAlignment="Left" Height="230" LastChildFill="False" VerticalAlignment="Top" Width="280" Grid.ColumnSpan="2" Canvas.Left="-253" Canvas.Top="270"/>
+                <TextBlock Canvas.Left="33" TextWrapping="Wrap" Text="{Binding VM_NonCorrelation, Mode=OneWay}" Canvas.Top="155" Height="106" Width="260" FontWeight="Bold" FontSize="24" TextAlignment="Center"/>
+                <TextBlock Canvas.Left="37" TextWrapping="Wrap" Text="{Binding VM_NonCorrelation, Mode=OneWay}" Canvas.Top="361" Height="106" Width="260" FontWeight="Bold" FontSize="18" TextAlignment="Center"/>
 
             </Canvas>
 

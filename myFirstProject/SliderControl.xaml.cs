@@ -124,7 +124,7 @@ namespace myFirstProject
             vm.Stop();
             pauseButton.Background = Brushes.White;
             playButton.Background = Brushes.DarkRed;
-            //= "#FF3FD422"
+            
         }
 
         private void play(object sender, RoutedEventArgs e)

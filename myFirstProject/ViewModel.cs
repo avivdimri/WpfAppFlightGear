@@ -68,6 +68,11 @@ namespace myFirstProject
                 model.changeMood();
                 IsPause = false;
         }
-      
+
+        public void exit()
+        {
+            model.Stop = true;
+        }
+
     }
 }

@@ -94,12 +94,6 @@ namespace myFirstProject
 
 		}
 
-		private void Pause_Click(object sender, RoutedEventArgs e)
-		{
-
-			vm.Stop();
-
-		}
 		private void upload_Click(object sender, RoutedEventArgs e)
 		{
 				OpenFileDialog openFile = new OpenFileDialog();
@@ -147,6 +141,13 @@ namespace myFirstProject
 
 			}
 			graphCont.Path = path;
+		}
+		
+		private void exit_Click(object sender, RoutedEventArgs e)
+		{
+			vm.exit();
+			this.Close();
+	
 		}
 	}
 }

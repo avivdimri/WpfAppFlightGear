@@ -134,6 +134,7 @@ namespace myFirstProject
                         dynamic_load = Activator.CreateInstance(i);
                     }
                 }
+                mydock.Children.Clear();
                 mydock.Children.Add(dynamic_load.create());
                 vm.Isopen = true;
               //  dynamic_load.
