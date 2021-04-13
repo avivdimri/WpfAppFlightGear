@@ -13,7 +13,7 @@ namespace myFirstProject
 {
     public class MyModel : InterfaceModel
     {
-       
+
         private animaly_detection anomaly = new animaly_detection();
 
         private LinkedList<string> mylist_train = new LinkedList<string>();
@@ -37,6 +37,25 @@ namespace myFirstProject
                 NotifyPropertyChanged("Dynamic_load");
             }
         }
+
+
+        //message in case there is no correlation
+        private string nonCorrelation;
+        public string NonCorrelation
+        {
+            get
+            {
+                return nonCorrelation;
+            }
+            set
+            {
+                nonCorrelation = value;
+                NotifyPropertyChanged("NonCorrelation");
+            }
+        }
+
+
+
 
         //propert of the Data train file
         List<List<float>> data_train;
@@ -99,7 +118,7 @@ namespace myFirstProject
                     mylist_train.AddLast(currentLine);
                 }
             }
-            ParseXml();
+            //ParseXml();
             Data_train = createMap(mylist_train);
 
         }
@@ -158,11 +177,12 @@ namespace myFirstProject
         }
 
         //The function gets path of XML file and gets from it the list of the flight features.
-        public void ParseXml()
+        public void ParseXml(string path)
         {
             int i;
             XmlDocument xdoc = new XmlDocument();
-            xdoc.Load("C:/Program Files/FlightGear 2020.3.6/data/Protocol/playback_small.xml");
+            //xdoc.Load("C:/Program Files/FlightGear 2020.3.6/data/Protocol/playback_small.xml");
+            xdoc.Load(path);
             XmlNodeList name = xdoc.GetElementsByTagName("name");
             int size = name.Count / 2; // read only the first part(the input) in the XML file
             for (i = 0; i < size; i++)
@@ -187,7 +207,7 @@ namespace myFirstProject
             List<float> list = data_test.ElementAt(index);
             return list;
         }
-     
+
         // The function gets feature and return the value of this feature in the current row which is reading now 
         public float findElement(string feature)
         {
@@ -196,7 +216,7 @@ namespace myFirstProject
             return list.ElementAt(IndexRow);
         }
 
-       
+
 
         // The function gets ip and port and creates onnection with the FG
         public void Connect(string ip, int port)
@@ -210,7 +230,7 @@ namespace myFirstProject
             client.disconnect();
         }
 
-         // The main function which responsible about the running of the FG on another thread.
+        // The main function which responsible about the running of the FG on another thread.
         public void Start()
         {
             isAfterLoad = true;
@@ -228,13 +248,13 @@ namespace myFirstProject
                     string line = mylist_test.ElementAt(IndexRow);
                     client.write(line); //send to the FG
                     updateData(); // update all the changes
-                    Thread.Sleep(speedsend); 
+                    Thread.Sleep(speedsend);
                 }
 
             }).Start();
         }
 
-     
+
         // The function updates all the important data for the views
         public void updateData()
         {
@@ -252,12 +272,26 @@ namespace myFirstProject
 
             // update  the data of the Graphs
             MainGraphList = setGraphList(MainGraphName);
-            SecondGraphList = setGraphList(SecondGraphName);
-            setLineReg();
+            if (SecondGraphName != null)
+            {
+                SecondGraphList = setGraphList(SecondGraphName);
+                NonCorrelation = null;
+                setLineReg();
+            }
+            else
+            {
+                SecondGraphList = new List<DataPoint>();
+                NonCorrelation = "There is no correlation";
+                LineReg = new List<DataPoint>();
+                Points_reg = new List<DataPoint>();
+            }
+
+
+
 
             // update the time
             setTime();
-           
+
             // update the dll
             if (dynamic_load != null)
             {
@@ -447,7 +481,7 @@ namespace myFirstProject
 
 
         ////// Joystick //////
-        
+
 
 
         //property of the Aileron 
@@ -558,7 +592,9 @@ namespace myFirstProject
             {
                 mainGraphName = value;
                 // update the name of the second Graph to be the most corrleative to the first
-                secondGraphName = get_element(mainGraphName);
+
+                SecondGraphName = get_element(mainGraphName);
+
                 NotifyPropertyChanged("MainGraphName");
             }
             get
@@ -590,6 +626,7 @@ namespace myFirstProject
             {
                 secondGraphName = value;
                 NotifyPropertyChanged("SecondGraphName");
+
             }
             get
             {
@@ -621,7 +658,7 @@ namespace myFirstProject
             List<float> x_train = get_col_train(mainGraphName);
             List<float> x_test = get_col_test(mainGraphName);
             float[] x_array = x_train.ToArray();
-            
+
             List<float> Y_train = get_col_train(secondGraphName);
             List<float> y_test = get_col_test(secondGraphName);
             float[] y_array = Y_train.ToArray();
@@ -630,18 +667,18 @@ namespace myFirstProject
             List<DataPoint> temp_points = new List<DataPoint>();
             int size = x_train.Count;
             int i;
-            for (i = 0; i < size ; ++i)
+            for (i = 0; i < size; ++i)
             {
                 //defines every point from 2 features lists 
                 ps[i] = new Point(x_array[i], y_array[i]);
-                
+
                 //defines the last 30 seconds Data points
                 if (i > (indexRow - 300) && i <= indexRow)
                 {
                     temp_points.Add(new DataPoint(x_test.ElementAt(i), y_test.ElementAt(i)));
                 }
             }
-            
+
             Line l = anomaly.linear_reg(ps, ps.Length);
             List<DataPoint> cor_point = new List<DataPoint>();
             size = x_test.Count;
@@ -685,7 +722,7 @@ namespace myFirstProject
                 return lineReg;
             }
         }
-         
+
         // The function get feature and return the feature which most corrleative to
         public string get_element(string col)
         {
@@ -700,13 +737,34 @@ namespace myFirstProject
             return null;
         }
 
+
+        //Correlation threshold
+        private double threshold = 0.7;
+
+        public double Threshold
+        {
+            set
+            {
+                threshold = value;
+
+                NotifyPropertyChanged("Threshold");
+            }
+            get
+            {
+                return threshold;
+            }
+        }
+
+
+
+
         //The function defines a map of couples of features which most correlaive each other
         public void pearson()
         {
 
             corelationMap = new List<KeyValuePair<string, string>>();
-            int i,j,index,size = myfeatures.Count;
-            float max,num;
+            int i, j, index, size = myfeatures.Count;
+            float max, num;
             for (i = 0; i < size; i++)
             {
 
@@ -731,8 +789,15 @@ namespace myFirstProject
                         }
                     }
                 }
-                corelationMap.Add(new KeyValuePair<string, string>(myfeatures.ElementAt(i), myfeatures.ElementAt(index)));
-
+                //Correlation threshold
+                if (max >= Threshold)
+                {
+                    corelationMap.Add(new KeyValuePair<string, string>(myfeatures.ElementAt(i), myfeatures.ElementAt(index)));
+                }
+                else
+                {
+                    corelationMap.Add(new KeyValuePair<string, string>(myfeatures.ElementAt(i), null));
+                }
             }
         }
 

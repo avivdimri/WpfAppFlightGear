@@ -29,10 +29,15 @@ namespace myFirstProject
 		VmDeshboard vmDeshboard;
 		VmControler vmcont;
 
-        VmGraph vm_graph;
-		
+		VmGraph vm_graph;
 
-        public MainWindow()
+		private bool path_csv_traing = false;
+		private bool path_csv_test = false;
+		private bool path_xml = false;
+
+
+
+		public MainWindow()
 		{
 			InitializeComponent();
 			MyModel m = new MyModel(new myClient());
@@ -43,85 +48,105 @@ namespace myFirstProject
 			deshboardCont.VM_deshboard = vmDeshboard;
 			vmcont = new VmControler(m);
 			joystickCont.Vm_Controler = vmcont;
-            vm_graph = new VmGraph(m);
-            graphCont.VM_Graph = vm_graph;
+			vm_graph = new VmGraph(m);
+			graphCont.VM_Graph = vm_graph;
 
-            this.DataContext = vm;
+			this.DataContext = vm;
+			///MessageBox.Show("Welcome to anomaly flight detect!\n" + "Please upload: " + "1.XML file\n" + "2.Train csv\n" + "3.Test csv file\n", "Alert", MessageBoxButton.OK, MessageBoxImage.Information);
+
 
 		}
 
 
 		private void Open_Click(object sender, RoutedEventArgs e)
 		{
-			OpenFileDialog openFile = new OpenFileDialog();
-			openFile.Filter = "CSV files (*.csv)|*.csv";
-			if (openFile.ShowDialog() == true)
+			if (path_xml)
 			{
-				path = openFile.FileName;
-				vm.Loadtrainfile(path);
+
+				OpenFileDialog openFile = new OpenFileDialog();
+				openFile.Filter = "CSV files (*.csv)|*.csv";
+				if (openFile.ShowDialog() == true)
+				{
+					path = openFile.FileName;
+					vm.Loadtrainfile(path);
+					path_csv_traing = true;
+				}
+            }
+            else
+            {
+				MessageBox.Show("please upload XML file!", "Alert", MessageBoxButton.OK, MessageBoxImage.Information);
+
 			}
-			
+
 		}
 
 		private void Start_Click(object sender, RoutedEventArgs e)
 		{
-			vm.Start();
+			if ((path_csv_traing) && (path_csv_test) && (path_xml))
+			{
+				vm.Start();
+			}
+			else
+			{
+
+				MessageBox.Show("Please upload:\n " + "1.XML file\n" + "2.Train csv\n" + "3.Test csv file\n", "Error", MessageBoxButton.OK, MessageBoxImage.Information);
+			}
+
 		}
 
 		private void Pause_Click(object sender, RoutedEventArgs e)
 		{
+
 			vm.Stop();
 
 		}
 		private void upload_Click(object sender, RoutedEventArgs e)
 		{
-			OpenFileDialog openFile = new OpenFileDialog();
-			openFile.Filter = "xml files (*.xml)|*.xml";
-			if (openFile.ShowDialog() == true)
+				OpenFileDialog openFile = new OpenFileDialog();
+				openFile.Filter = "xml files (*.xml)|*.xml";
+				if (openFile.ShowDialog() == true)
+				{
+					path = openFile.FileName;
+					vm.LoadfileXml(path);
+					path_xml = true;
+				}
+            
+           
+		}
+
+
+		private void MenuItem_Click(object sender, RoutedEventArgs e)
+		{
+			if (path_xml)
 			{
-				path = openFile.FileName;
-				vm.LoadfileXml(path);
+				OpenFileDialog openFile = new OpenFileDialog();
+				openFile.Filter = "CSV files (*.csv)|*.csv";
+				if (openFile.ShowDialog() == true)
+				{
+					path = openFile.FileName;
+					vm.Loadtestfile(path);
+					path_csv_test = true;
+				}
+			}
+			else
+			{
+				MessageBox.Show("please upload XML file!", "Alert", MessageBoxButton.OK, MessageBoxImage.Information);
 			}
 
 
-		}
-		private void deshCont_Loaded(object sender, RoutedEventArgs e)
-        {
-
-        }
-
-        private void controlerCont_Loaded(object sender, RoutedEventArgs e)
-        {
-
-        }
-
-        private void graphCont_Loaded(object sender, RoutedEventArgs e)
-        {
-
-        }
-
-        private void MenuItem_Click(object sender, RoutedEventArgs e)
-        {
-			OpenFileDialog openFile = new OpenFileDialog();
-			openFile.Filter = "CSV files (*.csv)|*.csv";
-			if (openFile.ShowDialog() == true)
-			{
-				path = openFile.FileName;
-				vm.Loadtestfile(path);
-			}
 
 		}
 
-        private void MenuItem_Click_1(object sender, RoutedEventArgs e)
-        {
+		private void MenuItem_Click_1(object sender, RoutedEventArgs e)
+		{
 			OpenFileDialog openFile = new OpenFileDialog();
 			openFile.Filter = "dll files (*.dll)|*.dll";
 			if (openFile.ShowDialog() == true)
 			{
 				path = openFile.FileName;
-				
+
 			}
 			graphCont.Path = path;
-        }
-    }
+		}
+	}
 }

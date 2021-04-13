@@ -11,10 +11,12 @@ namespace myFirstProject
 
     public class VmGraph : INotifyPropertyChanged
     {
+
+
         private MyModel model;
+
+        //Checks if Path of the dll was received
         private bool isopen = false;
-
-
         public bool Isopen
         {
             set
@@ -26,11 +28,25 @@ namespace myFirstProject
                 return isopen;
             }
         }
+
+
+        //the title of the csv
         public List<string> getColumnList()
         {
             return model.ColumnList;
         }
 
+
+        //Holds a message if there is no correlation
+        public string VM_NonCorrelation
+        {
+            get
+            {
+                return model.NonCorrelation;
+            }
+        }
+
+        //Did upload files
         public bool VM_IsAfterLoad
         {
             get
@@ -39,7 +55,7 @@ namespace myFirstProject
             }
         }
 
-
+        //Notifications
         public VmGraph(MyModel model)
         {
             this.model = model;
@@ -59,13 +75,7 @@ namespace myFirstProject
                 PropertyChanged(this, new PropertyChangedEventArgs(propName));
         }
 
-
-        //public void VM_setMainGraphList(string column)
-        //{
-        //    model.setMainGraphList(column);
-        //}
-
-
+        //list of the point of the main grph
         public List<DataPoint> VM_MainGraphList
         {
 
@@ -75,6 +85,7 @@ namespace myFirstProject
             }
         }
 
+        //the name of the main graph
         public string VM_MainGraphName
         {
 
@@ -87,7 +98,7 @@ namespace myFirstProject
                 model.MainGraphName = value;
             }
         }
-
+        //list of the point of the secend grph
         public List<DataPoint> VM_SecondGraphList
         {
 
@@ -97,7 +108,17 @@ namespace myFirstProject
             }
         }
 
+        //the name of the secend graph
+        public string VM_SecondGraphName
+        {
 
+            get
+            {
+                return model.SecondGraphName;
+            }
+        }
+
+        //the dll referens
         public dynamic VM_Dynamic_load
         {
 
@@ -112,17 +133,8 @@ namespace myFirstProject
         }
 
 
-        public string VM_SecondGraphName
-        {
 
-            get
-            {
-                return model.SecondGraphName;
-            }
-        }
-
-
-
+        //all the point of the test
         public List<DataPoint> VM_Points
         {
             set
@@ -136,7 +148,7 @@ namespace myFirstProject
         }
 
 
-       
+        //the line regression
         public List<DataPoint> VM_LineReg
         {
             set
@@ -149,31 +161,29 @@ namespace myFirstProject
             }
         }
 
+
+        //The method communicates with the dll and sends
+        //data to it each time a graph changes
         public void show(dynamic dll)
         {
-            if (isopen) { 
-            List<float> p1_train = model.get_col_train(model.MainGraphName);
-            List<float> p2_train = model.get_col_train(model.SecondGraphName);
-            List<float> p1_test = model.get_col_test(model.MainGraphName);
-            List<float> p2_test = model.get_col_test(model.SecondGraphName);
-                //List<Point> my_list = create_point_list(p1,p2
-            
-  
-            dll.update(p1_train,p2_train,p1_test,p2_test);
-            }
-        }
-        public List<Point> create_point_list(List<float>p1, List<float> p2)
-        {
-            List<Point> listPoint = new List<Point>();
-            for (int i = 0; i < p1.Count; i++)
+            //Did you load the dll
+            if (isopen)
             {
-                Point p = new Point(p1.ElementAt(i), p2.ElementAt(i));
-                listPoint.Add(p);
+                //Is there a correlation
+                if (model.SecondGraphName != null)
+                {
+                    List<float> p1_train = model.get_col_train(model.MainGraphName);
+                    List<float> p2_train = model.get_col_train(model.SecondGraphName);
+                    List<float> p1_test = model.get_col_test(model.MainGraphName);
+                    List<float> p2_test = model.get_col_test(model.SecondGraphName);
+                    dll.update(p1_train, p2_train, p1_test, p2_test);
+                }
+                else
+                {
+                    List<float> empty = new List<float>();
+                    dll.update(empty, empty, empty, empty);
+                }
             }
-            return listPoint;
-
         }
     }
-
-
 }

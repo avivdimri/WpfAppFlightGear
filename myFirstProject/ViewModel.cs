@@ -31,8 +31,9 @@ namespace myFirstProject
         }
         public void LoadfileXml(string path)
         {
-            //model.readcsvfile(path);
-            //model.parser(path);
+            model.ParseXml(path);
+           // model.readcsvfile(path);
+           // model.parser(path);
            // model.createMap();
         }
         public void Loadtrainfile(string path)

@@ -29,11 +29,12 @@ namespace myFirstProject
                 this.PropertyChanged(this, new PropertyChangedEventArgs(propName));
         }
 
-
+        // the Throttle
         public float VM_Throttle
         {
             get
             {
+                //Preparation for the slider
                 int max = 1;
                 int min = 0;
                 return (model.Throttle - min) / (max - min) * 100;
@@ -41,26 +42,31 @@ namespace myFirstProject
             }
 
         }
+
+        //the rudder
         public float VM_Rudder
         {
             get
             {
+                //Preparation for the slider
                 int max = 1;
                 int min = -1;
                 return (model.Rudder - min) / (max - min) * 100;
             }
 
         }
+        //the Aileron
         public float VM_Aileron
         {
             get
             {
-               
+
                 return model.Aileron;
 
             }
 
         }
+        //the Elevator
         public float VM_Elevator
         {
             get

@@ -11,7 +11,7 @@ namespace myFirstProject
     {
 
         private MyModel model;
-      
+
 
         public VmDeshboard(MyModel m)
         {
@@ -30,8 +30,10 @@ namespace myFirstProject
                 this.PropertyChanged(this, new PropertyChangedEventArgs(propName));
         }
 
+        //the altimeter
         public double VM_Altimeter
         {
+            //Preparation for the slider
             get
             {
                 int max = 750;
@@ -40,15 +42,19 @@ namespace myFirstProject
             }
 
         }
+
+        //the Airspeedr
         public float VM_Airspeed
         {
             get
             {
-                
+
                 return model.Airspeed;
             }
 
         }
+
+        //the Roll
         public float VM_Roll
         {
             get
@@ -57,6 +63,7 @@ namespace myFirstProject
             }
 
         }
+        //the Direction
         public float VM_Direction
         {
             get
@@ -65,6 +72,7 @@ namespace myFirstProject
             }
 
         }
+        //the Pitch
         public float VM_Pitch
         {
             get
@@ -73,6 +81,8 @@ namespace myFirstProject
             }
 
         }
+
+        //the yaw
         public float VM_Yaw
         {
             get

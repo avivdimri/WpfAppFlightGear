@@ -22,7 +22,7 @@ namespace myFirstProject
         }
 
         public string VM_Time { get { return model.Time; } }
-      
+
 
         private void NotifyPropertyChanged(string propName)
         {
@@ -37,13 +37,13 @@ namespace myFirstProject
         {
             if (!IsPause)
                 model.changeMood();
-                IsPause = true;
+            IsPause = true;
         }
         public void play()
         {
             if (IsPause)
                 model.changeMood();
-                IsPause = false;
+            IsPause = false;
         }
         public double VM_IndexRow
         {

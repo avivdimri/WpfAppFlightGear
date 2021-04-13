@@ -8,9 +8,17 @@
     <Grid>
 
         <Viewbox>
+
             <Canvas  Margin="0" Width="340" Height="340">
                 <Canvas Height="391" Canvas.Left="-94" Width="461">
-                    <ProgressBar Width="260" Height="25" Value="{Binding VM_Throttle, Mode=OneWay}" Canvas.Top="301"  Background="Orange" Foreground="Green" Canvas.Left="31">
+                    <ProgressBar Width="260" Height="24" Value="{Binding VM_Throttle, Mode=OneWay}" Canvas.Top="302"  Background="#99F6F3EF" Canvas.Left="63">
+                        
+                        <ProgressBar.Foreground>
+                            <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                                <GradientStop Color="Black"/>
+                                <GradientStop Color="#FFC14343" Offset="1"/>
+                            </LinearGradientBrush>
+                        </ProgressBar.Foreground>
                         <ProgressBar.RenderTransform>
                             <TransformGroup>
                                 <ScaleTransform/>
@@ -22,19 +30,13 @@
                     </ProgressBar>
                 </Canvas>
                 <Canvas Margin="110,0,10.2,0" Grid.RowSpan="2">
-                    <ProgressBar Width="260" Height="25" Value="{Binding ElementName=slider1, Path=Value}" Canvas.Left="-71" RenderTransformOrigin="0.685,0.44" Canvas.Top="355">
+                    <ProgressBar Width="260" Height="25" Value="{Binding ElementName=slider1, Path=Value}" Canvas.Left="-71" RenderTransformOrigin="0.685,0.44" Canvas.Top="355" BorderBrush="#9AE7F2EE" Background="#99F6F3EF">
                         <ProgressBar.Foreground>
                             <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
                                 <GradientStop Color="Black"/>
                                 <GradientStop Color="#FFC14343" Offset="1"/>
                             </LinearGradientBrush>
                         </ProgressBar.Foreground>
-                        <ProgressBar.Background>
-                            <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
-                                <GradientStop Color="Black"/>
-                                <GradientStop Color="#FF1FBF89" Offset="1"/>
-                            </LinearGradientBrush>
-                        </ProgressBar.Background>
                     </ProgressBar>
                 </Canvas>
                 <Canvas  x:Name="Base" Margin="0" Width="340" Height="340">
@@ -166,6 +168,34 @@
                         </Canvas.Resources>
                     </Canvas>
                 </Canvas>
+                <TextBlock TextWrapping="Wrap" Text="--throttle--" Background="#BF5B98E2" FontSize="22" FontWeight="Bold" RenderTransformOrigin="0.5,0.5" Canvas.Top="153" Canvas.Left="-111" >
+                    <TextBlock.RenderTransform>
+                        <TransformGroup>
+                            <ScaleTransform/>
+                            <SkewTransform/>
+                            <RotateTransform Angle="-90"/>
+                            <TranslateTransform/>
+                        </TransformGroup>
+                    </TextBlock.RenderTransform>
+                </TextBlock>
+
+                <TextBlock TextWrapping="Wrap" Text="--rudder--" Background="#C15B98E2" FontSize="22" FontWeight="Bold" RenderTransformOrigin="0.5,0.5" Canvas.Top="391" Canvas.Left="113"/>
+
+                <TextBlock TextWrapping="Wrap" Text="--aileron--" Background="#C15B98E2" FontSize="22" FontWeight="Bold" RenderTransformOrigin="0.5,0.5" Canvas.Left="113" Canvas.Top="-52"/>
+
+                <TextBlock TextWrapping="Wrap" Text="--elevator--" Background="#BF5B98E2" FontSize="22" FontWeight="Bold" RenderTransformOrigin="0.5,0.5" Canvas.Top="153" Canvas.Left="302" >
+                    <TextBlock.RenderTransform>
+                        <TransformGroup>
+                            <ScaleTransform/>
+                            <SkewTransform/>
+                            <RotateTransform Angle="90"/>
+                            <TranslateTransform/>
+                        </TransformGroup>
+                    </TextBlock.RenderTransform>
+                </TextBlock>
+
+
+
             </Canvas>
         </Viewbox>
     </Grid>

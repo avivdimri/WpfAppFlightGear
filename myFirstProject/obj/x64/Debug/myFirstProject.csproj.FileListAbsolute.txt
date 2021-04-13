@@ -36,7 +36,6 @@ C:\Users\Ori\Source\Repos\WpfAppFlightGear\myFirstProject\bin\x64\Debug\OxyPlot.
 C:\Users\Ori\Source\Repos\WpfAppFlightGear\myFirstProject\bin\x64\Debug\OxyPlot.Wpf.dll
 C:\Users\Ori\Source\Repos\WpfAppFlightGear\myFirstProject\bin\x64\Debug\OxyPlot.xml
 C:\Users\Ori\Source\Repos\WpfAppFlightGear\myFirstProject\bin\x64\Debug\OxyPlot.Wpf.xml
-C:\Users\Ori\Source\Repos\WpfAppFlightGear\myFirstProject\obj\x64\Debug\myFirstProject.csprojAssemblyReference.cache
 C:\Users\Ori\Source\Repos\WpfAppFlightGear\myFirstProject\obj\x64\Debug\Controler.g.cs
 C:\Users\Ori\Source\Repos\WpfAppFlightGear\myFirstProject\obj\x64\Debug\deshboard.g.cs
 C:\Users\Ori\Source\Repos\WpfAppFlightGear\myFirstProject\obj\x64\Debug\GraphControl.g.cs
@@ -91,3 +90,4 @@ C:\Users\Yehudit\source\repos\git\WpfAppFlightGear\myFirstProject\obj\x64\Debug\
 C:\Users\Yehudit\source\repos\git\WpfAppFlightGear\myFirstProject\obj\x64\Debug\myFirstProject.csproj.CopyComplete
 C:\Users\Yehudit\source\repos\git\WpfAppFlightGear\myFirstProject\obj\x64\Debug\myFirstProject.exe
 C:\Users\Yehudit\source\repos\git\WpfAppFlightGear\myFirstProject\obj\x64\Debug\myFirstProject.pdb
+C:\Users\Ori\Source\Repos\WpfAppFlightGear\myFirstProject\obj\x64\Debug\myFirstProject.csprojAssemblyReference.cache
