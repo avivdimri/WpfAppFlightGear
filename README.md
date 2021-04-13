@@ -12,21 +12,21 @@ This program was developed by four student, ori choen, ori abramnovich, aviv dim
 ### Code Design:
 FlightSimulatorApp has been programmed by the MVVM design, as we used C Sharp's data binding mechanism,and xaml.
 
-####### Features
-Controller:
+## Features:
+###### Controller:
 Using a sliders, you can control the flight vessel. The slider repesent the real time in the flight,you may choose to go forward or backwards as you wish.
 you can also decide about the speed the flight projected on the screen as your want.
 
-Grafh:
+###### Grafh:
 Using a list of the features that repesented all the featuers that are component in the flight-
 you may choose one of the featuers and his grafh and the most coorolation feature will show on the screen and update them self at real time.
 In addion,the line regression line of the tow features,and the last 30 second will be repesented also.
 
-Joystic:
+###### Joystic:
 A small joystic that show the movement of the palne during the flight.
 
 
-Real-Time flight:
+###### Real-Time flight:
 During the flight, you'll receive real-time flight data, such as Altimeter, Direction, Air Speed, Pitch, Roll, Heading and more.
 
 ### Loading DLL:
