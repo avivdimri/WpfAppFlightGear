@@ -29,7 +29,7 @@ A small joystic that show the movement of the palne during the flight.
 Real-Time flight:
 During the flight, you'll receive real-time flight data, such as Altimeter, Direction, Air Speed, Pitch, Roll, Heading and more.
 
-# Loding DLL:
+# Loading DLL:
 if you want-you also can find a devion in the flight at real time runing:
 There is tow algoritam that get a normal flight to learn from , and than a real flight to finding a point with a devion and represented it in bold(red color).
 A. SimpleAnomalyDeteion - learning the most noraml distance between point and her line regression,and finding which points are more distant than the normal and alert it.
