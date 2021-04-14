@@ -100,6 +100,9 @@ There is a few folders:
 
 ## Documentation
 
+Link for the presentation of Desktop App
+https://youtu.be/9PXQ427QCPU
+
 
 
 
