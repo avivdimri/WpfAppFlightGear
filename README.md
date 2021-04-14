@@ -25,6 +25,7 @@ Also,You can decide about the speed the flight projected on the screen as you wa
 
 Using a list of the features that repesented all the featuers that are component in the flight-
 you may choose one of the featuers and his grafh and the most correlation feature will show on the screen and update them self at real time.
+
 In addion,the line regression line of the tow features,and the last 30 second will be repesented also.
 
 ###### Joystic:
@@ -36,12 +37,14 @@ During the flight, you'll receive a real-time flight data, such as Altimeter, Di
 ### Loading DLL:
 
 If you want-you can also find a devion in the flight at real time runing:
+
 There is tow algoritam that get a normal flight to learn from , and then a real flight to finding a point with a devion and represented it in bold(red color).
 
 A. SimpleAnomalyDeteion - learning the most noraml distance between point and her line regression, and finding which points 
 are more distant than the normal and alert it.
 
 B. MinCircle - get the MinCircle that contains in all the normal point flight, and finding which point are inside the circle and alert it also in bold.
+
 When you are loding Dll libary - the circle / line regression and their devion points at real time will appear in the MainWindow,
 you may want to go specific to this time to learn about the devion more,the dev point will represented in red color.
 
@@ -52,10 +55,14 @@ you may find it in the plugins folder the declaration which method you need to l
 
 ### Instructions for load own DLL
 1.Create a class by the name - dll.
+
 2.Implement the function in IntrfaceDll.
+
 3.There is a three function to implement - craete update and time.(you  can see the decleration in the plugins folder).
+
 4.drow the shepes you want to shoe in the project.
-5.load the path dll file in run time of the project.
+
+5.Load the path dll file in run time of the project.
 
 ## Structure project:
 There is a few folders:
@@ -67,6 +74,8 @@ There is a few folders:
 3.In myfirstproject folder there is all the files that needed.
 
 4.In the plugins folder there is the dll lib for the algoritam.
+
+5.The folder FilesUploading there is the xml and tow csv files to upload for the project.
 
 
 # Installation for running the 
