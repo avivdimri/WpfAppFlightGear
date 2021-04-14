@@ -21,7 +21,6 @@ Using a slider, which can control the flight vessel. The slider repesent the rea
 Also,You can decide about the speed the flight projected on the screen as you want.
 
 ###### Grafh:
-![IMG_0065](https://user-images.githubusercontent.com/80414213/114616721-de6fa280-9caf-11eb-808d-dba013f7edf8.jpeg)
 
 Using a list of the features that repesented all the featuers that are component in the flight-
 you may choose one of the featuers and his grafh and the most correlation feature will show on the screen and update them self at real time.
