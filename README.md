@@ -115,7 +115,7 @@ If a View want to make change in the model we used with functions.
 
 Also, the Model has a client which resposinble about the connection with the Flight Gear Simulator.
 In the left side we can see that the View of the Graph has a member of dinamic dll which responsible on the connect of the dll View to the Main Window.
-The dll can be any algorithm whichimplement the interrface by name IntrfaceDll.
+The dll can be any algorithm whichimplement the interrface by name IntrfaceDll which contain the 3 function Create,Update,Time(its cut in the picture)
 
 
 ![UML](https://user-images.githubusercontent.com/80414213/114733560-204e2680-9d4c-11eb-96f5-8efcb688204f.png)
