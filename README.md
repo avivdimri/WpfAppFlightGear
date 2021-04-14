@@ -1,4 +1,7 @@
 # WpfDeskAppFlightGear
+Link to github-https://github.com/yosi058/WpfAppFlightGear.git
+
+Link for the presentation of Desktop App-https://youtu.be/9PXQ427QCPU
 
 A Desktop app which connects to FlightGear simulator and show all the important data about the flight,such as the speed,direction and joystic controler movement.
 
@@ -98,11 +101,5 @@ There is a few folders:
 
 
 ## Documentation
-
-Link for the presentation of Desktop App
-https://youtu.be/9PXQ427QCPU
-
-
-
 
 
