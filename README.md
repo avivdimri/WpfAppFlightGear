@@ -1,4 +1,4 @@
-![UML](https://user-images.githubusercontent.com/80414213/114733121-c0578000-9d4b-11eb-8312-425dfb44d3f5.png)
+
 # WpfDeskAppFlightGear
 Link to github-https://github.com/yosi058/WpfAppFlightGear.git
 
