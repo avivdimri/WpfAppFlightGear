@@ -141,6 +141,8 @@ namespace myFirstProject
             }
             catch (Exception e)
             {
+               MessageBox.Show("Dll loading has failed! please try againg", "Error", MessageBoxButton.OK, MessageBoxImage.Information);
+
                 Console.WriteLine(e.Message);
             }
             vm.VM_Dynamic_load = dynamic_load;
