@@ -102,6 +102,17 @@ There is a few folders:
 
 
 ## Documentation
+We can see in the UML below of the App which based on the MVVM architecture.
+We bulided some Views and then put them in the Main Window. Every View has View Model of its own, which is as the model for the View.
+For the View, it is an abstraction of the Model.It passes commands from the view to the model.
+
+The Views Model Converts model information into view information.
+The Model and every View Model Implement INotifyPropertyChanged interface and notify about changes for the observers like a View Model or View.
+The views Model get notifications from the model by adding delegates to its PropertyChangedevent.
+Eventually we used Data binding within the UI.
+
+If a View want to make change in the model we used with functions.
+
 ![UML](https://user-images.githubusercontent.com/80414213/114733560-204e2680-9d4c-11eb-96f5-8efcb688204f.png)
 
 
