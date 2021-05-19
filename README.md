@@ -1,6 +1,6 @@
 
 # WpfDeskAppFlightGear
-Link to github-https://github.com/yosi058/WpfAppFlightGear.git
+Link to github-https://github.com/avivdimri/WpfAppFlightGear.git
 
 Link for the presentation of Desktop App-https://youtu.be/9PXQ427QCPU
 
